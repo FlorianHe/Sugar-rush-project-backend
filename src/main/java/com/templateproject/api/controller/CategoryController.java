@@ -16,12 +16,13 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 
     @GetMapping("/categories")
-    public List<Category> index() {
-        return (List<Category>) categoryRepository.findAll();
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
     }
 
     // Une route /categories/{slug}/articles qui récupère les articles de la
-    // catégories défini dans slug avec une limite et un offset pour l’auto scroll
-    // (ex : /articles?offset=xx&limit=xx). Il faut prévoir un next, un previous et
-    // un count en plus des résultats
+    // catégorie défini dans slug
+    // Avec une limite et un offset pour l’auto scroll (ex :
+    // /articles?offset=xx&limit=xx). Il faut prévoir un next, un previous et un
+    // count en plus des résultats
 }
