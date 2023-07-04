@@ -31,7 +31,7 @@ public class Article {
     private String author;
     private String categories;
 
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "article")
     private List<Comment> listComments;
 
     public Article(int id, boolean is_main, String title, String slug,
