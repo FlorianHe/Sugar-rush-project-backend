@@ -1,4 +1,4 @@
-package com.templateproject.api.folderClassUser;
+package com.templateproject.api.model;
 
 public class User {
 

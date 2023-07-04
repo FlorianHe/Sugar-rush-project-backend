@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.templateproject.api.entity.Comment;
-import com.templateproject.api.folderClassUser.User;
+import com.templateproject.api.model.User;
 import com.templateproject.api.service.CommentService;
 
 @RestController
@@ -33,9 +33,7 @@ public class CommentsController {
 
     @PostMapping
     public Comment createComment(@RequestBody Comment commentDto) {
-        // TODO Remove this hardcoded user
-        User user = new User("John", "Doe", "johndoe");
-        Comment comment = new Comment(commentDto.getText(), user);
+        Comment comment = new Comment(commentDto.getText());
         return commentService.createComment(comment);
     }
 

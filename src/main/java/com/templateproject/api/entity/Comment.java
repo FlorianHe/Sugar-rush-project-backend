@@ -2,8 +2,6 @@ package com.templateproject.api.entity;
 
 import java.util.Date;
 
-import com.templateproject.api.folderClassUser.User;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
@@ -23,14 +21,13 @@ public class Comment {
     private Date date;
 
     // TODO Add @ManytoOne annotation
-    private User user;
+    // private User user;
 
     public Comment() {
     }
 
-    public Comment(String text, User user) {
+    public Comment(String text) {
         this.text = text;
-        this.user = user;
         this.date = new Date();
     }
 
@@ -58,12 +55,12 @@ public class Comment {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
-    }
+    // public User getUser() {
+    // return user;
+    // }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    // public void setUser(User user) {
+    // this.user = user;
+    // }
 
 }
