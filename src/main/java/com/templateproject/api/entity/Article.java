@@ -1,6 +1,7 @@
 package com.templateproject.api.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Article {
@@ -33,6 +35,9 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "comment")
+    private List<Comment> listComments;
 
     public Article(int id, boolean is_main, String title, String slug,
             String lead_, String content, String publication_image, String author, Category category) {
@@ -136,4 +141,11 @@ public class Article {
         this.category = category;
     }
 
+    public List<Comment> getListComments() {
+        return listComments;
+    }
+
+    public void setListComments(List<Comment> listComments) {
+        this.listComments = listComments;
+    }
 }

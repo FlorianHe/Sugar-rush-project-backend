@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.service.ArticleService;
 import com.templateproject.api.service.CommentService;
 
 @RestController
@@ -20,9 +22,11 @@ import com.templateproject.api.service.CommentService;
 public class CommentsController {
 
     private final CommentService commentService;
+    private final ArticleService articleService;
 
-    public CommentsController(CommentService commentService) {
+    public CommentsController(CommentService commentService, ArticleService articleService) {
         this.commentService = commentService;
+        this.articleService = articleService;
     }
 
     @GetMapping
@@ -48,5 +52,11 @@ public class CommentsController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/article/{articleId}")
+    public List<Comment> getCommentsByArticle(@PathVariable("articleId") Integer articleId) {
+        Article article = articleService.getArticleById(articleId);
+        return commentService.getCommentsByArticle(article);
     }
 }

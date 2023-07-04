@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
 import com.templateproject.api.repository.CommentRepository;
 
@@ -43,5 +44,9 @@ public class CommentService {
             return true;
         }
         return false;
+    }
+
+    public List<Comment> getCommentsByArticle(Article article) {
+        return commentRepository.findByArticle(article);
     }
 }

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,10 @@ public class Comment {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation_date;
+
+    @ManyToOne
+    @JoinColumn(name = "article_id")
+    private Article article;
 
     // TODO Add @ManytoOne annotation
     // private User user;
@@ -49,6 +55,14 @@ public class Comment {
 
     public void setCreation_date(Date date) {
         this.creation_date = date;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 
     // public User getUser() {
