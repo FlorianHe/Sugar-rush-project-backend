@@ -17,8 +17,8 @@ public class Category {
     private String name;
     private String slug;
 
-    // @OneToMany(mappedBy = "category")
-    // private List<Article> articles;
+    @OneToMany(mappedBy = "category")
+    private List<Article> articles;
 
     public Category() {
     }
