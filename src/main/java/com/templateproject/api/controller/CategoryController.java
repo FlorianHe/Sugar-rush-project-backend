@@ -2,18 +2,20 @@ package com.templateproject.api.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.templateproject.api.entity.Category;
 
+import com.templateproject.api.entity.Category;
 import com.templateproject.api.repository.CategoryRepository;
 
 @RestController
 public class CategoryController {
 
-    @Autowired
     private CategoryRepository categoryRepository;
+
+    public CategoryController(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     @GetMapping("/categories")
     public List<Category> getAllCategories() {

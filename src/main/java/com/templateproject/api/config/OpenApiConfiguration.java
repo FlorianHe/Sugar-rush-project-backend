@@ -37,4 +37,3 @@ public class OpenApiConfiguration {
                 .url("https://github.com/WildCodeSchool/sugar-rush-project-backend");
     }
 }
-
