@@ -17,7 +17,7 @@ public class OpenApiConfiguration {
 
     private Info apiInfo() {
         return new Info()
-                .title("NAME OF YOUR API")
+                .title("sugar_rush")
                 .description("DESCRIPTION OF YOUR API")
                 .version("1.0")
                 .contact(apiContact())
@@ -32,9 +32,8 @@ public class OpenApiConfiguration {
 
     private Contact apiContact() {
         return new Contact()
-                .name("PROJECT GROUP NAME")
+                .name("sugar_rush")
                 .email("EMAIL ADDRESS OF PROJECT GROUP")
                 .url("Project repo address");
     }
 }
-
