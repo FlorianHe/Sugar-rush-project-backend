@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Article {
@@ -27,10 +29,13 @@ public class Article {
 
     private String publication_image;
     private String author;
-    private String categories;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Article(int id, boolean is_main, String title, String slug,
-            String lead_, String content, String publication_image, String author, String categories) {
+            String lead_, String content, String publication_image, String author, Category category) {
         Id = id;
         this.is_main = is_main;
         this.title = title;
@@ -41,7 +46,7 @@ public class Article {
         this.content = content;
         this.publication_image = publication_image;
         this.author = author;
-        this.categories = categories;
+        this.category = category;
     }
 
     public Article() {
@@ -123,12 +128,12 @@ public class Article {
         this.author = author;
     }
 
-    public String getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(String categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }
