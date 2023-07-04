@@ -1,12 +1,14 @@
 package com.templateproject.api.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Article {
@@ -28,6 +30,9 @@ public class Article {
     private String publication_image;
     private String author;
     private String categories;
+
+    @OneToMany(mappedBy = "comment")
+    private List<Comment> listComments;
 
     public Article(int id, boolean is_main, String title, String slug,
             String lead_, String content, String publication_image, String author, String categories) {
@@ -131,4 +136,11 @@ public class Article {
         this.categories = categories;
     }
 
+    public List<Comment> getListComments() {
+        return listComments;
+    }
+
+    public void setListComments(List<Comment> listComments) {
+        this.listComments = listComments;
+    }
 }
