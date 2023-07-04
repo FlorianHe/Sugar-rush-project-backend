@@ -1,7 +1,13 @@
 package com.templateproject.api.entity;
 
+import java.util.Date;
+
+import com.templateproject.api.folderClassUser.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -12,17 +18,20 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    private String author;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
     // TODO Add @ManytoOne annotation
-    // private User user;
+    private User user;
 
     public Comment() {
     }
 
-    public Comment(String text, String author, User user) {
+    public Comment(String text, User user) {
         this.text = text;
-        this.author = author;
+        this.user = user;
+        this.date = new Date();
     }
 
     public Long getId() {
@@ -37,20 +46,24 @@ public class Comment {
         this.text = text;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public Date getDate() {
+        return date;
     }
 
-    // public User getUser() {
-    // return user;
-    // }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-    // public void setUser(User user) {
-    // this.user = user;
-    // }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }

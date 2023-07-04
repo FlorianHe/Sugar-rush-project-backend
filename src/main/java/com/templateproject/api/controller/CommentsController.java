@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.folderClassUser.User;
 import com.templateproject.api.service.CommentService;
 
 @RestController
 @RequestMapping("/comments")
-public class CommentController {
+public class CommentsController {
 
     private final CommentService commentService;
 
-    public CommentController(CommentService commentService) {
+    public CommentsController(CommentService commentService) {
         this.commentService = commentService;
     }
 
@@ -31,12 +32,15 @@ public class CommentController {
     }
 
     @PostMapping
-    public Comment createComment(@RequestBody Comment comment) {
+    public Comment createComment(@RequestBody Comment commentDto) {
+        // TODO Remove this hardcoded user
+        User user = new User("John", "Doe", "johndoe");
+        Comment comment = new Comment(commentDto.getText(), user);
         return commentService.createComment(comment);
     }
 
     @PutMapping("/{id}")
-    public Comment updateComment(@PathVariable("id") Long id, @RequestBody Comment updatedComment) {
+    public Comment updateComment(@PathVariable("id") Long id, @RequestBody String updatedComment) {
         return commentService.updateComment(id, updatedComment);
     }
 
