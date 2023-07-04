@@ -55,7 +55,7 @@ public class ArticleController {
         articleToUpdate.setContent(article.getContent());
         articleToUpdate.setPublication_image(article.getPublication_image());
         articleToUpdate.setAuthor(article.getAuthor());
-        articleToUpdate.setCategories(article.getCategories());
+        articleToUpdate.setCategory(article.getCategory());
 
         return articleRepository.save(articleToUpdate);
     }
