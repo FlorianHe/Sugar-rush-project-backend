@@ -30,7 +30,7 @@ public class CommentService {
     public Comment updateComment(Long id, String updatedComment) {
         Comment existingComment = commentRepository.findById(id).orElse(null);
         if (existingComment != null) {
-            existingComment.setText(updatedComment);
+            existingComment.setContent(updatedComment);
             return commentRepository.save(existingComment);
         }
         return null;

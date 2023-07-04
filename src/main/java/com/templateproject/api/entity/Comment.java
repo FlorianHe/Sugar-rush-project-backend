@@ -15,10 +15,10 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String text;
+    private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private Date creation_date;
 
     // TODO Add @ManytoOne annotation
     // private User user;
@@ -26,33 +26,29 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String text) {
-        this.text = text;
-        this.date = new Date();
+    public Comment(String content) {
+        this.content = content;
+        this.creation_date = new Date();
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setContent(String text) {
+        this.content = text;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Date getCreation_date() {
+        return creation_date;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreation_date(Date date) {
+        this.creation_date = date;
     }
 
     // public User getUser() {
