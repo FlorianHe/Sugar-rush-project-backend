@@ -21,7 +21,7 @@ import com.templateproject.api.repository.ArticleRepository;
 @RequestMapping("/articles")
 public class ArticleController {
 
-    ArticleRepository articleRepository;
+    private final ArticleRepository articleRepository;
 
     public ArticleController(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
@@ -65,5 +65,13 @@ public class ArticleController {
         articleRepository.deleteById(id);
         return true;
     }
+
+    // Not sure if this is needed since it's already in the CommentsController
+    // @GetMapping("/{articleId}/comments")
+    // public List<Comment> getCommentsByArticle(@PathVariable("articleId") Long
+    // articleId) {
+    // Article article = articleService.getArticleById(articleId);
+    // return articleService.getCommentsByArticle(article);
+    // }
 
 }
