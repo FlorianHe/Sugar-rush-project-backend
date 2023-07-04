@@ -1,6 +1,6 @@
 package com.templateproject.api.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,14 +29,14 @@ public class Article {
     private String author;
     private String categories;
 
-    public Article(int id, boolean is_main, String title, String slug, Date publication_date, Date modification_date,
+    public Article(int id, boolean is_main, String title, String slug,
             String lead_, String content, String publication_image, String author, String categories) {
         Id = id;
         this.is_main = is_main;
         this.title = title;
         this.slug = slug;
-        this.publication_date = publication_date;
-        this.modification_date = modification_date;
+        this.publication_date = new Date();
+        this.modification_date = new Date();
         this.lead_ = lead_;
         this.content = content;
         this.publication_image = publication_image;
