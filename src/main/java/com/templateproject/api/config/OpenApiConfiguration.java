@@ -17,8 +17,8 @@ public class OpenApiConfiguration {
 
     private Info apiInfo() {
         return new Info()
-                .title("sugar_rush")
-                .description("DESCRIPTION OF YOUR API")
+                .title("SUGAR RUSH API")
+                .description("API for the SUGAR RUSH project")
                 .version("1.0")
                 .contact(apiContact())
                 .license(apiLicence());
@@ -32,8 +32,8 @@ public class OpenApiConfiguration {
 
     private Contact apiContact() {
         return new Contact()
-                .name("sugar_rush")
+                .name("RUGAR RUSH PROJECT GROUP")
                 .email("EMAIL ADDRESS OF PROJECT GROUP")
-                .url("Project repo address");
+                .url("https://github.com/WildCodeSchool/sugar-rush-project-backend");
     }
 }
