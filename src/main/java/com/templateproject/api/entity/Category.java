@@ -2,6 +2,9 @@ package com.templateproject.api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +20,8 @@ public class Category {
     private String name;
     private String slug;
 
+    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Article> articles;
 

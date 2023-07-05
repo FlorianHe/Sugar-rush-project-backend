@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +36,7 @@ public class Article {
     private String publication_image;
     private String author;
 
+    @JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "category_id")
