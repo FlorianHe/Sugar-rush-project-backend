@@ -1,9 +1,7 @@
 package com.templateproject.api.controller;
 
-import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,57 +11,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Article;
-import com.templateproject.api.repository.ArticleRepository;
+import com.templateproject.api.service.ArticleService;
 
 @RestController
 @RequestMapping("/articles")
 public class ArticleController {
 
-    private final ArticleRepository articleRepository;
+    private final ArticleService articleService;
 
-    public ArticleController(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
+    public ArticleController(ArticleService articleService) {
+        this.articleService = articleService;
     }
 
     @GetMapping
-    public List<Article> getAllEmployees(int limit, int offset) {
-        Pageable pageable = new OffsetBasedPageRequest(limit, offset);
-        return articleRepository.findAll(pageable).getContent();
+    public List<Article> getAllArticles(int limit, int offset) {
+        return articleService.getAllArticles(limit, offset);
     }
 
     @GetMapping("/{id}")
     public Article show(@PathVariable int id) {
-        return articleRepository.findById(id).get();
+        return articleService.show(id);
     }
 
     @PostMapping
     public Article create(@RequestBody Article article) {
-        return articleRepository.save(article);
+        return articleService.create(article);
     }
 
     @PutMapping("/{id}")
     public Article update(@PathVariable int id, @RequestBody Article article) {
-        // getting article
-        Article articleToUpdate = articleRepository.findById(id).get();
-        articleToUpdate.setMain(article.is_main());
-        articleToUpdate.setTitle(article.getTitle());
-        articleToUpdate.setSlug(article.getSlug());
-        articleToUpdate.setModification_date(new Date());
-        articleToUpdate.setLead(article.getLead());
-        articleToUpdate.setContent(article.getContent());
-        articleToUpdate.setPublication_image(article.getPublication_image());
-        articleToUpdate.setAuthor(article.getAuthor());
-        articleToUpdate.setCategory(article.getCategory());
-
-        return articleRepository.save(articleToUpdate);
+        return articleService.update(id, article);
     }
 
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable int id) {
-        articleRepository.deleteById(id);
-        return true;
+        return articleService.delete(id);
     }
 
     // Not sure if this is needed since it's already in the CommentsController
