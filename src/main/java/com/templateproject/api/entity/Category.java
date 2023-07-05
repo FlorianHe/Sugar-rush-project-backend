@@ -27,10 +27,6 @@ public class Category {
         return this.id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -45,6 +41,14 @@ public class Category {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public List<Article> getArticles() {
+        return this.articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
 }

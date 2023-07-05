@@ -3,14 +3,7 @@ package com.templateproject.api.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
@@ -55,7 +48,7 @@ public class CommentsController {
     }
 
     @GetMapping("/article/{articleId}")
-    public List<Comment> getCommentsByArticle(@PathVariable("articleId") Integer articleId) {
+    public List<Comment> getCommentsByArticle(@PathVariable("articleId") Long articleId) {
         Article article = articleService.getArticleById(articleId);
         return commentService.getCommentsByArticle(article);
     }

@@ -34,7 +34,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public Article show(@PathVariable int id) {
+    public Article show(@PathVariable Long id) {
         return articleRepository.findById(id).get();
     }
 
@@ -44,7 +44,7 @@ public class ArticleController {
     }
 
     @PutMapping("/{id}")
-    public Article update(@PathVariable int id, @RequestBody Article article) {
+    public Article update(@PathVariable Long id, @RequestBody Article article) {
         // getting article
         Article articleToUpdate = articleRepository.findById(id).get();
         articleToUpdate.setMain(article.is_main());
@@ -61,7 +61,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable int id) {
+    public boolean delete(@PathVariable Long id) {
         articleRepository.deleteById(id);
         return true;
     }
