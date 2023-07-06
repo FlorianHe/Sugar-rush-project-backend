@@ -37,11 +37,4 @@ public class CommentsController {
         return ResponseEntity.notFound().build();
     }
 
-    // TODO Not sure if this is needed here since it's already in ArticleController
-    // @GetMapping("/article/{articleId}/comments")
-    // public List<Comment> getCommentsByArticle(@PathVariable("articleId") Integer
-    // articleId) {
-    // Article article = articleService.getArticleById(articleId);
-    // return commentService.getCommentsByArticle(article);
-    // }
 }
