@@ -48,13 +48,13 @@ public class ArticleService {
     public Article update(Long id, Article article) {
         // getting article
         Article articleToUpdate = articleRepository.findById(id).get();
-        articleToUpdate.setMain(article.is_main());
+        articleToUpdate.setMain(article.isMain());
         articleToUpdate.setTitle(article.getTitle());
         articleToUpdate.setSlug(article.getSlug());
-        articleToUpdate.setModification_date(new Date());
+        articleToUpdate.setModificationDate(new Date());
         articleToUpdate.setLeads(article.getLeads());
         articleToUpdate.setContent(article.getContent());
-        articleToUpdate.setPublication_image(article.getPublication_image());
+        articleToUpdate.setPublicationImage(article.getPublicationImage());
         articleToUpdate.setAuthor(article.getAuthor());
         articleToUpdate.setCategory(article.getCategory());
 
