@@ -3,7 +3,6 @@ package com.templateproject.api.entity;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -42,7 +41,6 @@ public class Article {
     private String author;
 
     @JsonIdentityReference(alwaysAsId = true)
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
