@@ -34,12 +34,6 @@ public class CommentsController {
         return commentService.getAllComments();
     }
 
-    @PostMapping
-    public Comment createComment(@RequestBody Comment commentDto) {
-        Comment comment = new Comment(commentDto.getContent());
-        return commentService.createComment(comment);
-    }
-
     @PutMapping("/{id}")
     public Comment updateComment(@PathVariable("id") Long id, @RequestBody String updatedComment) {
         return commentService.updateComment(id, updatedComment);
@@ -54,9 +48,10 @@ public class CommentsController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/article/{articleId}")
-    public List<Comment> getCommentsByArticle(@PathVariable("articleId") Integer articleId) {
-        Article article = articleService.getArticleById(articleId);
-        return commentService.getCommentsByArticle(article);
-    }
+    // TODO Not sure if this is needed here since it's already in ArticleController
+    //@GetMapping("/article/{articleId}/comments")
+    //public List<Comment> getCommentsByArticle(@PathVariable("articleId") Integer articleId) {
+    //    Article article = articleService.getArticleById(articleId);
+    //    return commentService.getCommentsByArticle(article);
+    // }
 }

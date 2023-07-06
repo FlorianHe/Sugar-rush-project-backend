@@ -12,16 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.templateproject.api.entity.Article;
+import com.templateproject.api.entity.Comment;
 import com.templateproject.api.service.ArticleService;
+import com.templateproject.api.service.CommentService;
 
 @RestController
 @RequestMapping("/articles")
 public class ArticleController {
 
     private final ArticleService articleService;
+    private final CommentService commentService;
 
-    public ArticleController(ArticleService articleService) {
+    public ArticleController(ArticleService articleService, CommentService commentService) {
         this.articleService = articleService;
+        this.commentService = commentService;
     }
 
     @GetMapping
@@ -49,12 +53,17 @@ public class ArticleController {
         return articleService.delete(id);
     }
 
-    // Not sure if this is needed since it's already in the CommentsController
-    // @GetMapping("/{articleId}/comments")
-    // public List<Comment> getCommentsByArticle(@PathVariable("articleId") Long
-    // articleId) {
-    // Article article = articleService.getArticleById(articleId);
-    // return articleService.getCommentsByArticle(article);
-    // }
+    @GetMapping("/{id}/comments")
+    public List<Comment> getCommentsByArticle(@PathVariable("id") Long articleId) {
+        Article article = articleService.getArticleById(articleId);
+        return articleService.getCommentsByArticle(article);
+    }
+
+    
+    @PostMapping("/{id}/comments")
+    public Comment createComment(@PathVariable("id") Long articleId, @RequestBody Comment commentDto) {
+        Comment comment = new Comment(commentDto.getContent());
+        return commentService.createComment(comment, articleId);
+    }
 
 }

@@ -6,15 +6,19 @@ import org.springframework.stereotype.Service;
 
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.CommentRepository;
 
 @Service
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final ArticleRepository articleRepository;
 
-    public CommentService(CommentRepository commentRepository) {
+
+    public CommentService(CommentRepository commentRepository, ArticleRepository articleRepository) {
         this.commentRepository = commentRepository;
+        this.articleRepository = articleRepository;
     }
 
     public List<Comment> getAllComments() {
@@ -24,7 +28,13 @@ public class CommentService {
     // TODO Add a method to find all comments by the user id
     // TODO List<Comment> getAllCommentsByUserId(Long userId);
 
-    public Comment createComment(Comment comment) {
+    public Comment createComment(Comment comment, Long articleId) {
+        Article article = articleRepository.getArticleById(articleId);
+ 
+        // Définir l'article pour le commentaire
+        comment.setArticle(article);
+
+        // Enregistrer le commentaire
         return commentRepository.save(comment);
     }
 

@@ -3,6 +3,9 @@ package com.templateproject.api.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +40,8 @@ public class Article {
     private Category category;
 
     @OneToMany(mappedBy = "article")
+    @JsonManagedReference
+    @JsonIgnore
     private List<Comment> listComments;
 
     public Article(int id, boolean is_main, String title, String slug,

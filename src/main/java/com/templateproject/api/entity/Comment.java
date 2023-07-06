@@ -2,6 +2,8 @@ package com.templateproject.api.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,6 +26,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "article_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Article article;
 
     // TODO Add @ManytoOne annotation
