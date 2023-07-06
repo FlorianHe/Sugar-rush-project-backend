@@ -25,17 +25,20 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private boolean is_main;
+    private boolean isMain;
+
     private String title;
     private String slug;
-    private Date publication_date;
-    private Date modification_date;
+    private Date publicationDate;
+    private Date modificationDate;
+
     private String leads;
 
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private String publication_image;
+    private String publicationImage;
+
     private String author;
 
     @JsonIdentityReference(alwaysAsId = true)
@@ -52,16 +55,16 @@ public class Article {
     @JsonIgnore
     private List<Comment> listComments;
 
-    public Article(boolean is_main, String title, String slug,
-            String leads, String content, String publication_image, String author, Category category) {
-        this.is_main = is_main;
+    public Article(boolean isMain, String title, String slug,
+            String leads, String content, String publicationImage, String author, Category category) {
+        this.isMain = isMain;
         this.title = title;
         this.slug = slug;
-        this.publication_date = new Date();
-        this.modification_date = new Date();
+        this.publicationDate = new Date();
+        this.modificationDate = new Date();
         this.leads = leads;
         this.content = content;
-        this.publication_image = publication_image;
+        this.publicationImage = publicationImage;
         this.author = author;
         this.category = category;
     }
@@ -73,12 +76,12 @@ public class Article {
         return Id;
     }
 
-    public boolean is_main() {
-        return is_main;
+    public boolean isMain() {
+        return isMain;
     }
 
-    public void setMain(boolean is_main) {
-        this.is_main = is_main;
+    public void setMain(boolean isMain) {
+        this.isMain = isMain;
     }
 
     public String getTitle() {
@@ -97,20 +100,20 @@ public class Article {
         this.slug = slug;
     }
 
-    public Date getPublication_date() {
-        return publication_date;
+    public Date getPublicationDate() {
+        return publicationDate;
     }
 
-    public void setPublication_date(Date publication_date) {
-        this.publication_date = publication_date;
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
     }
 
-    public Date getModification_date() {
-        return modification_date;
+    public Date getModificationDate() {
+        return modificationDate;
     }
 
-    public void setModification_date(Date modification_date) {
-        this.modification_date = modification_date;
+    public void setModificationDate(Date modificationDate) {
+        this.modificationDate = modificationDate;
     }
 
     public String getLeads() {
@@ -129,12 +132,12 @@ public class Article {
         this.content = content;
     }
 
-    public String getPublication_image() {
-        return publication_image;
+    public String getPublicationImage() {
+        return publicationImage;
     }
 
-    public void setPublication_image(String publication_image) {
-        this.publication_image = publication_image;
+    public void setPublicationImage(String publicationImage) {
+        this.publicationImage = publicationImage;
     }
 
     public String getAuthor() {
