@@ -3,11 +3,10 @@ package com.templateproject.api.entity;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +30,7 @@ public class Article {
     private String slug;
     private Date publication_date;
     private Date modification_date;
-    private String lead_;
+    private String leads;
 
     @Column(columnDefinition = "TEXT")
     private String content;
@@ -54,13 +53,13 @@ public class Article {
     private List<Comment> listComments;
 
     public Article(boolean is_main, String title, String slug,
-            String lead_, String content, String publication_image, String author, Category category) {
+            String leads, String content, String publication_image, String author, Category category) {
         this.is_main = is_main;
         this.title = title;
         this.slug = slug;
         this.publication_date = new Date();
         this.modification_date = new Date();
-        this.lead_ = lead_;
+        this.leads = leads;
         this.content = content;
         this.publication_image = publication_image;
         this.author = author;
@@ -114,12 +113,12 @@ public class Article {
         this.modification_date = modification_date;
     }
 
-    public String getLead() {
-        return lead_;
+    public String getLeads() {
+        return leads;
     }
 
-    public void setLead(String lead_) {
-        this.lead_ = lead_;
+    public void setLeads(String leads) {
+        this.leads = leads;
     }
 
     public String getContent() {
