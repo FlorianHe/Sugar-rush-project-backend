@@ -3,6 +3,7 @@ package com.templateproject.api.entity;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
+@JsonIgnoreProperties({"article"})
 public class Comment {
 
     @Id

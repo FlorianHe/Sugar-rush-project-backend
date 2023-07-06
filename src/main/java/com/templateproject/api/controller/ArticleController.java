@@ -54,16 +54,15 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}/comments")
-    public List<Comment> getCommentsByArticle(@PathVariable("id") Long articleId) {
-        Article article = articleService.getArticleById(articleId);
+    public List<Comment> getCommentsByArticle(@PathVariable("id") Long id) {
+        Article article = articleService.getArticleById(id);
         return articleService.getCommentsByArticle(article);
     }
 
     
     @PostMapping("/{id}/comments")
-    public Comment createComment(@PathVariable("id") Long articleId, @RequestBody Comment commentDto) {
-        Comment comment = new Comment(commentDto.getContent());
-        return commentService.createComment(comment, articleId);
+    public Comment createComment(@PathVariable("id") Long id, @RequestBody Comment commentDto) {
+        return commentService.createComment(commentDto, id);
     }
 
 }

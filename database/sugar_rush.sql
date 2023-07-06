@@ -18,7 +18,7 @@ INSERT INTO `category`
 VALUES (1, 'Fun', 'fun'), (2, 'Sport', 'sport'), (3, 'Carie', 'carie'), (4, 'Miam', 'miam'), (
         5,
         'Ça coute bonbon',
-        'ca_coute_bonbon'
+        'ca-coute-bonbon'
     );
 
 ;

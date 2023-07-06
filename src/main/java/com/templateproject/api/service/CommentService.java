@@ -1,5 +1,6 @@
 package com.templateproject.api.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -28,11 +29,12 @@ public class CommentService {
     // TODO Add a method to find all comments by the user id
     // TODO List<Comment> getAllCommentsByUserId(Long userId);
 
-    public Comment createComment(Comment comment, Long articleId) {
-        Article article = articleRepository.getReferenceById(articleId);
+    public Comment createComment(Comment comment, Long id) {
+        Article article = articleRepository.getReferenceById(id);
  
         // Définir l'article pour le commentaire
         comment.setArticle(article);
+        comment.setCreation_date(new Date());
 
         // Enregistrer le commentaire
         return commentRepository.save(comment);
