@@ -2,6 +2,9 @@ package com.templateproject.api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +20,8 @@ public class Category {
     private String name;
     private String slug;
 
+    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Article> articles;
 
@@ -25,10 +30,6 @@ public class Category {
 
     public Long getId() {
         return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -45,6 +46,14 @@ public class Category {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public List<Article> getArticles() {
+        return this.articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
 }

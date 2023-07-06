@@ -34,7 +34,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public Article show(@PathVariable int id) {
+    public Article show(@PathVariable Long id) {
         return articleService.show(id);
     }
 
@@ -44,12 +44,12 @@ public class ArticleController {
     }
 
     @PutMapping("/{id}")
-    public Article update(@PathVariable int id, @RequestBody Article article) {
+    public Article update(@PathVariable Long id, @RequestBody Article article) {
         return articleService.update(id, article);
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable int id) {
+    public boolean delete(@PathVariable Long id) {
         return articleService.delete(id);
     }
 

@@ -29,7 +29,7 @@ public class CommentService {
     // TODO List<Comment> getAllCommentsByUserId(Long userId);
 
     public Comment createComment(Comment comment, Long articleId) {
-        Article article = articleRepository.getArticleById(articleId);
+        Article article = articleRepository.getReferenceById(articleId);
  
         // Définir l'article pour le commentaire
         comment.setArticle(article);

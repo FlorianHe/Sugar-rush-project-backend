@@ -6,6 +6,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,13 +17,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private Long Id;
 
     private boolean is_main;
     private String title;
@@ -35,18 +39,22 @@ public class Article {
     private String publication_image;
     private String author;
 
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @Transient
+    private String categorySlug;
 
     @OneToMany(mappedBy = "article")
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
 
-    public Article(int id, boolean is_main, String title, String slug,
+    public Article(boolean is_main, String title, String slug,
             String lead_, String content, String publication_image, String author, Category category) {
-        Id = id;
         this.is_main = is_main;
         this.title = title;
         this.slug = slug;
@@ -62,7 +70,7 @@ public class Article {
     public Article() {
     }
 
-    public int getId() {
+    public Long getId() {
         return Id;
     }
 
@@ -136,6 +144,14 @@ public class Article {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getCategorySlug() {
+        return this.category.getSlug();
+    }
+
+    public void setCategorySlug(String categorySlug) {
+        this.category.setSlug(categorySlug);
     }
 
     public Category getCategory() {

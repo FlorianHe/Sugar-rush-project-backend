@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Article;
+import com.templateproject.api.entity.Category;
 import com.templateproject.api.entity.Comment;
 import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.CommentRepository;
@@ -17,17 +18,20 @@ public class ArticleService {
 
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
+    private final CategoryService categoryService;
 
-    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository) {
+    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,
+            CategoryService categoryService) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
+        this.categoryService = categoryService;
     }
 
     public List<Comment> getCommentsByArticle(Article article) {
         return commentRepository.findByArticle(article);
     }
 
-    public Article getArticleById(Integer articleId) {
+    public Article getArticleById(Long articleId) {
         return articleRepository.findById(articleId).orElse(null);
     }
 
@@ -36,7 +40,7 @@ public class ArticleService {
         return articleRepository.findAll(pageable).getContent();
     }
 
-    public Article show(int id) {
+    public Article show(Long id) {
         return articleRepository.findById(id).get();
     }
 
@@ -44,7 +48,7 @@ public class ArticleService {
         return articleRepository.save(article);
     }
 
-    public Article update(int id, Article article) {
+    public Article update(Long id, Article article) {
         // getting article
         Article articleToUpdate = articleRepository.findById(id).get();
         articleToUpdate.setMain(article.is_main());
@@ -60,8 +64,15 @@ public class ArticleService {
         return articleRepository.save(articleToUpdate);
     }
 
-    public boolean delete(int id) {
+    public boolean delete(Long id) {
         articleRepository.deleteById(id);
         return true;
     }
+
+    public List<Article> findArticlesByCategory(String categorySlug, int limit, int offset) {
+        Category category = categoryService.findCategoryBySlug(categorySlug);
+        Pageable pageable = new OffsetBasedPageRequest(limit, offset);
+        return articleRepository.findByCategory(category, pageable);
+    }
+
 }
