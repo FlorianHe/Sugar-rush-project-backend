@@ -22,8 +22,8 @@ import java.util.Optional;
  */
 public class MainController {
 
-    @Autowired
-    AuthorRepository authorRepository;
+    //@Autowired
+    //AuthorRepository authorRepository;
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -31,13 +31,17 @@ public class MainController {
     @Autowired
     ArticleRepository articleRepository;
     
+    @Autowired
+    CommentRepository commentRepository;
+    
     @GetMapping("/restoreall_database")
     public String restoreAll() {
         
-        // remove all categories, authors and articles
-        authorRepository.deleteAll();
+        // remove all categories, authors, articles , comments
+        //authorRepository.deleteAll();
         categoryRepository.deleteAll();
         articleRepository.deleteAll();
+        commentRepository.deleteAll();
         
         // create the restoration category
         Category restoration = categoryRepository.save(new Category("Restoration"));
@@ -50,7 +54,7 @@ public class MainController {
         categoryRepository.save(new Category("Ça coute bonbon", "ca-coute-bonbon", restoration));
         
         
-// create the restoreauthor authors
+		/* create the restoreauthor authors
         Author restoreauthor = authorRepository.save(new Author("Restoration"));
            
         // add authors to the restoreauthor author
@@ -59,8 +63,9 @@ public class MainController {
         authorRepository.save(new Author("Guillaume","Gros", restoreauthor));
         authorRepository.save(new Author("Selin","Agzibuyuk", restoreauthor));
         authorRepository.save(new Author("Alexandre","Boutemy", restoreauthor));
-     
-           // create the restorearticle articles
+		*/
+      
+        // create the restorearticle articles
         Article restorearticle = articleRepository.save(new Article("Restoration"));
         
         // add articles to the restorearticle article
@@ -162,6 +167,25 @@ public class MainController {
                 "https://commons.wikimedia.org/wiki/File:Sucre,_Bolivia_-_(24545082440).jpg?uselang=fr",
         restorearticle));
 
+		// create the restorecomment comments
+        Comment restorecomment = commentRepository.save(new Comment("Restoration"));
+                
+        // add comment to the restorecomment comment
+        //art n°1 - comment n°1
+        commentRepository.save(new Comment(
+               
+               "Un bon article de synthèse sur les bienfaits et méfaits du caramel! Merci, on y voit plus clair!",
+                LocalDateTime.parse("2023-06-15 15:14:00"),
+                1,
+                restorecomment));
+        
+        //art n°1 - comment n°2
+        commentRepository.save(new Comment(
+               
+               "Un article de synthèse qui fera plaisir à nos amis dentistes!",
+                LocalDateTime.parse("2023-06-25 15:15:00"),
+                1,
+                restorecomment));
         
         return "/";
      }
