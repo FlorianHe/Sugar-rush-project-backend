@@ -27,12 +27,9 @@ public class ArticleService {
         this.categoryService = categoryService;
     }
 
-    public List<Comment> getCommentsByArticle(Article article) {
+    public List<Comment> getCommentsByArticle(Long id) {
+        Article article = articleRepository.findById(id).orElse(null);
         return commentRepository.findByArticle(article);
-    }
-
-    public Article getArticleById(Long articleId) {
-        return articleRepository.findById(articleId).orElse(null);
     }
 
     public List<Article> getAllArticles(int limit, int offset) {

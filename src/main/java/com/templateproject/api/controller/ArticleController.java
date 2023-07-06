@@ -55,8 +55,7 @@ public class ArticleController {
 
     @GetMapping("/{id}/comments")
     public List<Comment> getCommentsByArticle(@PathVariable("id") Long id) {
-        Article article = articleService.getArticleById(id);
-        return articleService.getCommentsByArticle(article);
+        return articleService.getCommentsByArticle(id);
     }
 
     
