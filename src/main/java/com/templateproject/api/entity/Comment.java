@@ -31,9 +31,6 @@ public class Comment {
     @JsonIdentityReference(alwaysAsId = true)
     private Article article;
 
-    // TODO Add @ManytoOne annotation
-    // private User user;
-
     public Comment() {
     }
 
@@ -69,13 +66,5 @@ public class Comment {
     public void setArticle(Article article) {
         this.article = article;
     }
-
-    // public User getUser() {
-    // return user;
-    // }
-
-    // public void setUser(User user) {
-    // this.user = user;
-    // }
 
 }
