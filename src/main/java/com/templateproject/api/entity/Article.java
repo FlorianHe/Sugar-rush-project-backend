@@ -33,8 +33,8 @@ public class Article {
 
     private String leads;
 
-    @Column(columnDefinition = "TEXT")
-    private String content;
+    //@Column(columnDefinition = "LONG")
+    private Long articleContent_id;
 
     private String publicationImage;
 
@@ -54,14 +54,14 @@ public class Article {
     private List<Comment> listComments;
 
     public Article(boolean isMain, String title, String slug,
-            String leads, String content, String publicationImage, String author, Category category) {
+            String leads, Long articleContent_id, String publicationImage, String author, Category category) {
         this.isMain = isMain;
         this.title = title;
         this.slug = slug;
         this.publicationDate = new Date();
         this.modificationDate = new Date();
         this.leads = leads;
-        this.content = content;
+        this.articleContent_id = articleContent_id;
         this.publicationImage = publicationImage;
         this.author = author;
         this.category = category;
@@ -122,12 +122,12 @@ public class Article {
         this.leads = leads;
     }
 
-    public String getContent() {
-        return content;
+    public Long getArticleContentID() {
+        return articleContent_id;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setArticleContentID(Long articleContent_id) {
+        this.articleContent_id = articleContent_id;
     }
 
     public String getPublicationImage() {
