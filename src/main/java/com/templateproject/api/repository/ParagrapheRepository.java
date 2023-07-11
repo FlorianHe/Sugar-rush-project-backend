@@ -11,5 +11,5 @@ import com.templateproject.api.entity.Paragraphe;
 
 public interface ParagrapheRepository extends JpaRepository<Paragraphe, Long> {
 
-    //public List<Article> findByCategory(Category category, Pageable pageable);
+    List<Paragraphe> findByArticle(Article article);
 }

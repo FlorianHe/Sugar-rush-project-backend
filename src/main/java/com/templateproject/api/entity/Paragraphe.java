@@ -26,21 +26,25 @@ public class Paragraphe {
 
     private String title;
     
+    // I for Intro - C for Conclusion - P for paragraph
+    private char typeContent;
+    
     @Column(columnDefinition = "TEXT")
     private String content;
 
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
-    @JoinColumn(name = "articleContent_id")
-    private ArticleContent articleContent;
-
+    @JoinColumn(name = "article_id")
+    private Article article;
     
-    public Paragraphe( String title, 
-             String content, ArticleContent articleContent) {
+       
+    public Paragraphe( String title, char typeContent,
+             String content, Article article) {
         
         this.title = title;
+        this.typeContent = typeContent;
         this.content = content;
-        this.articleContent = articleContent;
+        this.article = article;
     }
 
     public Paragraphe() {
@@ -57,6 +61,14 @@ public class Paragraphe {
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    public char getTypeContent() {
+        return typeContent;
+    }
+
+    public void setTypeContent(char typeContent) {
+        this.typeContent = typeContent;
+    }
 
     public String getContent() {
         return content;
@@ -66,12 +78,12 @@ public class Paragraphe {
         this.content = content;
     }
 
-    public ArticleContent getArticleContent() {
-        return articleContent;
+    public Article getArticle() {
+        return article;
     }
 
-    public void setArticleContent_id(ArticleContent articleContent) {
-        this.articleContent = articleContent;
+    public void setArticle(Article article) {
+        this.article = article;
     }
     
 }

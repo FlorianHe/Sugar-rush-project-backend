@@ -33,9 +33,6 @@ public class Article {
 
     private String leads;
 
-    //@Column(columnDefinition = "LONG")
-    private Long articleContent_id;
-
     private String publicationImage;
 
     private String author;
@@ -48,20 +45,27 @@ public class Article {
     @Transient
     private String categorySlug;
 
+    //gestion des commentaires 
     @OneToMany(mappedBy = "article")
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
+    
+    //gestion des paragraphes
+    @OneToMany(mappedBy = "article")
+    @JsonManagedReference
+    @JsonIgnore
+    private List<Paragraphe> listParags;
 
     public Article(boolean isMain, String title, String slug,
-            String leads, Long articleContent_id, String publicationImage, String author, Category category) {
+            String leads, String publicationImage, String author, Category category) {
         this.isMain = isMain;
         this.title = title;
         this.slug = slug;
         this.publicationDate = new Date();
         this.modificationDate = new Date();
         this.leads = leads;
-        this.articleContent_id = articleContent_id;
+       
         this.publicationImage = publicationImage;
         this.author = author;
         this.category = category;
@@ -121,15 +125,7 @@ public class Article {
     public void setLeads(String leads) {
         this.leads = leads;
     }
-
-    public Long getArticleContentID() {
-        return articleContent_id;
-    }
-
-    public void setArticleContentID(Long articleContent_id) {
-        this.articleContent_id = articleContent_id;
-    }
-
+    
     public String getPublicationImage() {
         return publicationImage;
     }
@@ -168,5 +164,13 @@ public class Article {
 
     public void setListComments(List<Comment> listComments) {
         this.listComments = listComments;
+    }
+    
+    public List<Paragraphe> getListParags() {
+        return listParags;
+    }
+
+    public void setListParags(List<Paragraphe> listParags) {
+        this.listParags = listParags;
     }
 }

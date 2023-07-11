@@ -53,7 +53,7 @@ public class ArticleService {
         articleToUpdate.setSlug(article.getSlug());
         articleToUpdate.setModificationDate(new Date());
         articleToUpdate.setLeads(article.getLeads());
-        articleToUpdate.setContent(article.getContent());
+        //articleToUpdate.setContent(article.getContent());
         articleToUpdate.setPublicationImage(article.getPublicationImage());
         articleToUpdate.setAuthor(article.getAuthor());
         articleToUpdate.setCategory(article.getCategory());
