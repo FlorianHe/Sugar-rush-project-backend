@@ -10,21 +10,27 @@ import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Category;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.entity.Paragraphe;
 import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.CommentRepository;
+import com.templateproject.api.repository.ParagrapheRepository;
 
 @Service
 public class ArticleService {
 
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
+    private final ParagrapheRepository paragrapheRepository;
+    
     private final CategoryService categoryService;
+    
 
-    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,
+    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,ParagrapheRepository paragrapheRepository,
             CategoryService categoryService) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
         this.categoryService = categoryService;
+        this.paragrapheRepository = paragrapheRepository;
     }
 
     public List<Comment> getCommentsByArticle(Long id) {
@@ -42,7 +48,14 @@ public class ArticleService {
     }
 
     public Article create(Article article) {
-        return articleRepository.save(article);
+        List<Paragraphe> listParagraphes = article.getListParags();
+        Article articleReturn = articleRepository.save(article);
+        for (Paragraphe paragraphe : listParagraphes) {
+            paragraphe.setArticle(articleReturn);
+            paragrapheRepository.save(paragraphe);
+        }
+        return articleReturn;
+        
     }
 
     public Article update(Long id, Article article) {

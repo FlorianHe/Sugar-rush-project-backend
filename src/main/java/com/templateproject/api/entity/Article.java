@@ -53,8 +53,8 @@ public class Article {
     
     //gestion des paragraphes
     @OneToMany(mappedBy = "article")
-    @JsonManagedReference
-    @JsonIgnore
+    //@JsonManagedReference
+    //@JsonIgnore
     private List<Paragraphe> listParags;
 
     public Article(boolean isMain, String title, String slug,
