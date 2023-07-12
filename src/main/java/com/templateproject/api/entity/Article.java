@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+
 
 @Entity
 public class Article {
@@ -33,9 +33,6 @@ public class Article {
 
     private String leads;
 
-    @Column(columnDefinition = "TEXT")
-    private String content;
-
     private String publicationImage;
 
     private String author;
@@ -45,23 +42,25 @@ public class Article {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Transient
-    private String categorySlug;
-
+         
     @OneToMany(mappedBy = "article")
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
+    
+    
+    @OneToMany(mappedBy = "article")
+    private List<Paragraph> listParagraphs;
 
     public Article(boolean isMain, String title, String slug,
-            String leads, String content, String publicationImage, String author, Category category) {
+            String leads, String publicationImage, String author, Category category) {
         this.isMain = isMain;
         this.title = title;
         this.slug = slug;
         this.publicationDate = new Date();
         this.modificationDate = new Date();
         this.leads = leads;
-        this.content = content;
+       
         this.publicationImage = publicationImage;
         this.author = author;
         this.category = category;
@@ -121,15 +120,7 @@ public class Article {
     public void setLeads(String leads) {
         this.leads = leads;
     }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
+    
     public String getPublicationImage() {
         return publicationImage;
     }
@@ -168,5 +159,13 @@ public class Article {
 
     public void setListComments(List<Comment> listComments) {
         this.listComments = listComments;
+    }
+    
+    public List<Paragraph> getListParagraphs() {
+        return listParagraphs;
+    }
+
+    public void setListParagraphs(List<Paragraph> listParagraphs) {
+        this.listParagraphs = listParagraphs;
     }
 }
