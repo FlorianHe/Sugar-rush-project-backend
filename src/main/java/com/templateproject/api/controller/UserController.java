@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.templateproject.api.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping()
 public class UserController {
 
     private final UserService userService;
@@ -19,12 +19,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("user/{id}")
     public User getUserById(Long id) {
         return userService.getUserById(id);
     }
 
-    @PostMapping()
+    @PostMapping("/register")
     public User createUser(User user) {
         return userService.createUser(user);
     }
