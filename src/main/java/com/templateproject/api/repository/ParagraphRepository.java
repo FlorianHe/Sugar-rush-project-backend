@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Category;
-import com.templateproject.api.entity.Paragraphe;
+import com.templateproject.api.entity.Paragraph;
 
-public interface ParagrapheRepository extends JpaRepository<Paragraphe, Long> {
+public interface ParagraphRepository extends JpaRepository<Paragraph, Long> {
 
-    List<Paragraphe> findByArticle(Article article);
+    List<Paragraph> findByArticle(Article article);
 }

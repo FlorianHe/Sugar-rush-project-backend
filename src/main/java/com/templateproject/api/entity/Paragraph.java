@@ -20,7 +20,7 @@ import jakarta.persistence.Transient;
 
 @Entity
 //@JsonIgnoreProperties({"article"})
-public class Paragraphe {
+public class Paragraph {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Paragraphe {
     private Article article;
     
        
-    public Paragraphe( String title, char typeContent,
+    public Paragraph( String title, char typeContent,
              String content, Article article) {
         
         this.title = title;
@@ -50,7 +50,7 @@ public class Paragraphe {
         this.article = article;
     }
 
-    public Paragraphe() {
+    public Paragraph() {
     }
 
     public Long getId() {

@@ -55,7 +55,7 @@ public class Article {
     @OneToMany(mappedBy = "article")
     //@JsonManagedReference
     //@JsonIgnore
-    private List<Paragraphe> listParags;
+    private List<Paragraph> listParagraphs;
 
     public Article(boolean isMain, String title, String slug,
             String leads, String publicationImage, String author, Category category) {
@@ -166,11 +166,11 @@ public class Article {
         this.listComments = listComments;
     }
     
-    public List<Paragraphe> getListParags() {
-        return listParags;
+    public List<Paragraph> getListParagraphs() {
+        return listParagraphs;
     }
 
-    public void setListParags(List<Paragraphe> listParags) {
-        this.listParags = listParags;
+    public void setListParagraphs(List<Paragraph> listParagraphs) {
+        this.listParagraphs = listParagraphs;
     }
 }

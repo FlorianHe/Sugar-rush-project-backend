@@ -10,27 +10,27 @@ import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Category;
 import com.templateproject.api.entity.Comment;
-import com.templateproject.api.entity.Paragraphe;
+import com.templateproject.api.entity.Paragraph;
 import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.CommentRepository;
-import com.templateproject.api.repository.ParagrapheRepository;
+import com.templateproject.api.repository.ParagraphRepository;
 
 @Service
 public class ArticleService {
 
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
-    private final ParagrapheRepository paragrapheRepository;
+    private final ParagraphRepository paragraphRepository;
     
     private final CategoryService categoryService;
     
 
-    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,ParagrapheRepository paragrapheRepository,
+    public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,ParagraphRepository paragraphRepository,
             CategoryService categoryService) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
         this.categoryService = categoryService;
-        this.paragrapheRepository = paragrapheRepository;
+        this.paragraphRepository = paragraphRepository;
     }
 
     public List<Comment> getCommentsByArticle(Long id) {
@@ -48,11 +48,11 @@ public class ArticleService {
     }
 
     public Article create(Article article) {
-        List<Paragraphe> listParagraphes = article.getListParags();
+        List<Paragraph> listParagraphs = article.getListParagraphs();
         Article articleReturn = articleRepository.save(article);
-        for (Paragraphe paragraphe : listParagraphes) {
-            paragraphe.setArticle(articleReturn);
-            paragrapheRepository.save(paragraphe);
+        for (Paragraph paragraph : listParagraphs) {
+            paragraph.setArticle(articleReturn);
+            paragraphRepository.save(paragraph);
         }
         return articleReturn;
         
