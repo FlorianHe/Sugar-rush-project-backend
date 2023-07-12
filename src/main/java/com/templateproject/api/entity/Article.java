@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+
 
 @Entity
 public class Article {
@@ -42,19 +42,14 @@ public class Article {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Transient
-    private String categorySlug;
-
-    //gestion des commentaires 
+         
     @OneToMany(mappedBy = "article")
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
     
-    //gestion des paragraphes
+    
     @OneToMany(mappedBy = "article")
-    //@JsonManagedReference
-    //@JsonIgnore
     private List<Paragraph> listParagraphs;
 
     public Article(boolean isMain, String title, String slug,
