@@ -98,6 +98,10 @@ public class User implements UserDetails {
         this.username = username;
     }
 
+    public String getUserStringName() {
+        return this.username;
+    }
+
     public String getEmail() {
         return email;
     }
