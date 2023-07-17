@@ -51,18 +51,18 @@ public class SecurityConfiguration {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.GET, "/articles/**", "/categories/**",
-                             "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
-                            .requestMatchers(HttpMethod.POST, "/articles/*/comments", "/profiles/**",
-                                    "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
-                            .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
-                            .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
-                            .requestMatchers(HttpMethod.GET, "/users/*/comments", "/users/*/articles", "/comments/**").hasAuthority("SCOPE_ROLE_ADMIN")
-                            .requestMatchers(HttpMethod.POST, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
-                            .requestMatchers(HttpMethod.PUT, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
-                            .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN");
-                    auth.anyRequest().authenticated();
+                            "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
+                        .requestMatchers(HttpMethod.GET, "/users/*/comments", "/users/*/articles", "/comments/**").hasAuthority("SCOPE_ROLE_ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/articles/*/comments", "/profiles/**", "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
+                        .requestMatchers(HttpMethod.POST, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
+                        
+                        .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
+                        .requestMatchers(HttpMethod.PUT, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
+                        .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN")
+                        .requestMatchers("/register", "/login").permitAll()
+                        .anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
