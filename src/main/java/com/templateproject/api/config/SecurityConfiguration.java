@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(HttpMethod.GET, "/comments/**", "/articles/**", "/categories/**",
+                    auth.requestMatchers(HttpMethod.GET, "/articles/**", "/categories/**",
                              "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
                             .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
                             .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
@@ -58,6 +58,9 @@ public class SecurityConfiguration {
                                     "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.GET, "/users/*/comments", "/users/*/articles", "/comments/**").hasAuthority("SCOPE_ROLE_ADMIN")
+                            .requestMatchers(HttpMethod.POST, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
+                            .requestMatchers(HttpMethod.PUT, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
                             .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN");
                     auth.anyRequest().authenticated();
                 })
