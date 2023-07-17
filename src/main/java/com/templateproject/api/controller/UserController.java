@@ -1,5 +1,6 @@
 package com.templateproject.api.controller;
 
+import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.User;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.templateproject.api.service.UserService;
@@ -48,6 +50,12 @@ public class UserController {
     @PostMapping("/login")
     public String login(String email, String password) {
         return userService.login(email, password);
+    }
+
+    @GetMapping("/users/{id}/comments")
+    public List<Comment> getCommentsByUserId(@PathVariable("id") Long id, @RequestParam(defaultValue = "10") int limit,
+            @RequestParam(defaultValue = "0") int offset) {
+        return userService.getCommentsByUser(id, limit, offset);
     }
 
 }
