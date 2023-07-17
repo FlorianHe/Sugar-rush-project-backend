@@ -65,6 +65,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "author")
     private List<Article> articles;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Comment> listComment;
+
     public User() {
     }
 
@@ -154,6 +158,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public List<Comment> getListComment() {
+        return listComment;
+    }
+
+    public void setListComment(List<Comment> listComment) {
+        this.listComment = listComment;
     }
 
 }

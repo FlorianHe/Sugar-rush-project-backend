@@ -2,7 +2,6 @@ package com.templateproject.api.controller;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.templateproject.api.entity.Comment;
@@ -29,12 +28,8 @@ public class CommentsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteComment(@PathVariable("id") Long id) {
-        boolean deleted = commentService.deleteComment(id);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+    public Boolean deleteComment(@PathVariable("id") Long id) {
+        return commentService.deleteComment(id);
     }
 
 }

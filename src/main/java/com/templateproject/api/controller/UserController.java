@@ -1,6 +1,7 @@
 package com.templateproject.api.controller;
 
 import com.templateproject.api.entity.Article;
+import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.User;
 
 import java.util.List;
@@ -58,6 +59,12 @@ public class UserController {
     @GetMapping("/users/{id}/articles")
     public List<Article> getArticlesByUser(@PathVariable("id") Long id, @RequestParam(defaultValue = "9")int limit, @RequestParam(defaultValue = "0")int offset) {
         return articleService.getArticlesByUser(id, limit, offset);
+    }
+
+    @GetMapping("/users/{id}/comments")
+    public List<Comment> getCommentsByUserId(@PathVariable("id") Long id, @RequestParam(defaultValue = "10") int limit,
+            @RequestParam(defaultValue = "0") int offset) {
+        return userService.getCommentsByUser(id, limit, offset);
     }
 
 }
