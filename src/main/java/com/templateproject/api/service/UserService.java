@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.Role;
 import com.templateproject.api.entity.User;
 import com.templateproject.api.repository.RoleRepository;
@@ -73,4 +74,8 @@ public class UserService implements UserDetailsService {
         return tokenService.generateToken(authentication);
     }
 
+    public List<Comment> getCommentsByUser(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"))
+                .getListComment();
+    }
 }

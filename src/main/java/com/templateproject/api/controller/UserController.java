@@ -1,5 +1,6 @@
 package com.templateproject.api.controller;
 
+import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.User;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.templateproject.api.service.CommentService;
 import com.templateproject.api.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,9 +23,11 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 public class UserController {
 
     private final UserService userService;
+    private final CommentService commentService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CommentService commentService) {
         this.userService = userService;
+        this.commentService = commentService;
     }
 
     @Operation(summary = "Find users", description = "Find all users")
@@ -48,6 +52,11 @@ public class UserController {
     @PostMapping("/login")
     public String login(String email, String password) {
         return userService.login(email, password);
+    }
+
+    @GetMapping("/comments")
+    public List<Comment> getAllComments() {
+        return commentService.getAllComments();
     }
 
 }
