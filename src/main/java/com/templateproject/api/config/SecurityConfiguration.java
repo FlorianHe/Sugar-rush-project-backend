@@ -51,17 +51,14 @@ public class SecurityConfiguration {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.GET, "/comments/**", "/articles/**", "/categories/**",
-                            "/register/**","/login/**", "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**", "/categories/**",
-                                    "/index.html")
-                            .hasAuthority("ROLE_USER")
-                            .requestMatchers(HttpMethod.POST, "/articles/**/comments/**", "/profiles/**",
-                                    "/sugar-datas/**")
-                            .hasAuthority("ROLE_USER")
-                            .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("ROLE_USER")
-                            .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("ROLE_USER")
-                            .requestMatchers(HttpMethod.POST, "/articles/**").hasAuthority("ROLE_REDACTOR");
-
+                             "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.POST, "/articles/*/comments", "/profiles/**",
+                                    "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
