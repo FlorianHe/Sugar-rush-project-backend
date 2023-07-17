@@ -52,10 +52,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.GET, "/comments/**", "/articles/**", "/categories/**",
                              "/swagger-ui/**" ,"/v3/**", "/index.html").permitAll()
-                            .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
+                            .requestMatchers(HttpMethod.POST, "/register", "/login", "/articles/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/users/**", "/profiles/**").permitAll()//.hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.POST, "/articles/*/comments", "/profiles/**",
-                                    "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
+                                    "/sugar-datas/**").permitAll()//.hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
                             .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN");

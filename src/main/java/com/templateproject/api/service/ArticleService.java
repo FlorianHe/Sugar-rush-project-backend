@@ -10,8 +10,10 @@ import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Category;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.entity.User;
 import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.CommentRepository;
+import com.templateproject.api.repository.UserRepository;
 
 @Service
 public class ArticleService {
@@ -19,12 +21,14 @@ public class ArticleService {
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
     private final CategoryService categoryService;
+    private final UserRepository userRepository;
 
     public ArticleService(CommentRepository commentRepository, ArticleRepository articleRepository,
-            CategoryService categoryService) {
+            CategoryService categoryService, UserRepository userRepository) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
         this.categoryService = categoryService;
+        this.userRepository = userRepository;
     }
 
     public List<Comment> getCommentsByArticle(Long id) {
@@ -70,6 +74,12 @@ public class ArticleService {
         Category category = categoryService.findCategoryBySlug(categorySlug);
         Pageable pageable = new OffsetBasedPageRequest(limit, offset);
         return articleRepository.findByCategory(category, pageable);
+    }
+
+        public List<Article> getArticlesByUser(Long id, int limit, int offset) {
+        User user = userRepository.findById(id).orElse(null);
+        Pageable pageable = new OffsetBasedPageRequest(limit, offset);
+        return articleRepository.findByAuthor(user, pageable);
     }
 
 }

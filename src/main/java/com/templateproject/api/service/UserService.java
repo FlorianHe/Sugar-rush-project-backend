@@ -15,8 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Role;
 import com.templateproject.api.entity.User;
+import com.templateproject.api.repository.ArticleRepository;
 import com.templateproject.api.repository.RoleRepository;
 import com.templateproject.api.repository.UserRepository;
 

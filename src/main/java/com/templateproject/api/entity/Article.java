@@ -27,19 +27,19 @@ public class Article {
     private boolean isMain;
 
     private String title;
-    private String slug;
-    private Date publicationDate;
-    private Date modificationDate;
 
+    private String slug;
+
+    private Date publicationDate;
+    
+    private Date modificationDate;
+    
     private String leads;
 
     @Column(columnDefinition = "TEXT")
     private String content;
-
+    
     private String publicationImage;
-
-    private String author;
-
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -53,6 +53,11 @@ public class Article {
     @JsonIgnore
     private List<Comment> listComments;
 
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User author;
+
     public Article(boolean isMain, String title, String slug,
             String leads, String content, String publicationImage, String author, Category category) {
         this.isMain = isMain;
@@ -63,7 +68,6 @@ public class Article {
         this.leads = leads;
         this.content = content;
         this.publicationImage = publicationImage;
-        this.author = author;
         this.category = category;
     }
 
@@ -138,14 +142,6 @@ public class Article {
         this.publicationImage = publicationImage;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getCategorySlug() {
         return this.category.getSlug();
     }
@@ -168,5 +164,13 @@ public class Article {
 
     public void setListComments(List<Comment> listComments) {
         this.listComments = listComments;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
