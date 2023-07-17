@@ -25,10 +25,6 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
-    List<Comment> getAllCommentsByUserId(Long userId) {
-        return commentRepository.findAllByUserId(userId);
-    }
-
     public Comment createComment(Comment comment, Long id) {
         Article article = articleRepository.getReferenceById(id);
 

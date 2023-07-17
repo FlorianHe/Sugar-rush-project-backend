@@ -11,8 +11,6 @@ import com.templateproject.api.entity.Comment;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    List<Comment> findAllByUserId(Long userId);
-
     List<Comment> findByArticle(Article article);
 
 }

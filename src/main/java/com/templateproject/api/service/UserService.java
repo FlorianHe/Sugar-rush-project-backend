@@ -75,7 +75,6 @@ public class UserService implements UserDetailsService {
     }
 
     public List<Comment> getCommentsByUser(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"))
-                .getListComment();
+        return userRepository.getComments(id);
     }
 }
