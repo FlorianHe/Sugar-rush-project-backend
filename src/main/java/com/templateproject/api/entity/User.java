@@ -36,11 +36,9 @@ public class User implements UserDetails {
     private Long id;
 
     @NotBlank(message = "Le prénom est obligatoire")
-    @Size(min = 2, message = "Le nom doit avoir au minimum 2 caract\u00E8res")
     private String firstName;
 
     @NotBlank(message = "Le nom est obligatoire")
-    @Size(min = 2, message = "Le pr\u00E9nom doit avoir au minimum 2 caract\u00E8res")
     private String lastName;
 
     @NotBlank(message = "Le username est obligatoire")
@@ -56,6 +54,7 @@ public class User implements UserDetails {
 
     // EAGER, will directly fetch the roles, longer loading time
     // Mandatory for security users and roles management
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role_junction", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> authorities = new HashSet<Role>();
@@ -140,21 +139,25 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

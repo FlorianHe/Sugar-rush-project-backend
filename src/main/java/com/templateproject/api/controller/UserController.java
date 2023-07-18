@@ -3,8 +3,9 @@ package com.templateproject.api.controller;
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.LoginRequest;
-import com.templateproject.api.entity.Token;
+import com.templateproject.api.entity.LoginResponse;
 import com.templateproject.api.entity.User;
+import com.templateproject.api.repository.UserRepository;
 
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class UserController {
 
     private final UserService userService;
     private final ArticleService articleService;
+    private final UserRepository userRepository;
 
-    public UserController(UserService userService, ArticleService articleService) {
+    public UserController(UserService userService, ArticleService articleService, UserRepository userRepository) {
         this.userService = userService;
         this.articleService = articleService;
+        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Find users", description = "Find all users")
@@ -49,21 +52,22 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public Token createUser(User user) {
+    public LoginResponse createUser(User user) {
         String email = user.getUsername();
         String password = user.getPassword();
         user = userService.createUser(user);
         String token = userService.login(email, password);
-        Token response = new Token(token);
+        LoginResponse response = new LoginResponse(token, user);
         return response;
     }
 
     @PostMapping("/login")
-    public Token login(@RequestBody LoginRequest loginRequest) {
+    public LoginResponse login(@RequestBody LoginRequest loginRequest) {
         String email = loginRequest.getEmail();
         String password = loginRequest.getPassword();
         String token = userService.login(email, password);
-        Token response = new Token(token);
+        User user = userRepository.findByEmail(email).get();
+        LoginResponse response = new LoginResponse(token, user);
         return response;
     }
 
