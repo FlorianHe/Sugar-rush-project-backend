@@ -2,6 +2,8 @@ package com.templateproject.api.controller;
 
 import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.entity.LoginRequest;
+import com.templateproject.api.entity.Token;
 import com.templateproject.api.entity.User;
 
 import java.util.List;
@@ -47,16 +49,22 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String createUser(User user) {
+    public Token createUser(User user) {
         String email = user.getUsername();
         String password = user.getPassword();
         user = userService.createUser(user);
-        return userService.login(email, password);
+        String token = userService.login(email, password);
+        Token response = new Token(token);
+        return response;
     }
 
     @PostMapping("/login")
-    public String login(String email, String password) {
-        return userService.login(email, password);
+    public Token login(@RequestBody LoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+        String token = userService.login(email, password);
+        Token response = new Token(token);
+        return response;
     }
 
     @GetMapping("/users/{id}/articles")
