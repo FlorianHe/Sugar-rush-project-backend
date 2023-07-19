@@ -13,6 +13,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         .allowedOrigins("http://localhost:4200")
         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
         .allowedHeaders("Content-Type", "Date", "Total-Count", "loginInfo", "Authorization")
-        .allowCredentials(true);
+        .allowCredentials(true)
+        .maxAge(3600);
+
     }
 }

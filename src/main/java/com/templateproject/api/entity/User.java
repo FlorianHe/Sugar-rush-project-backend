@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,10 +36,8 @@ public class User implements UserDetails {
     @Column(name = "user_id")
     private Long id;
 
-    @NotBlank(message = "Le prénom est obligatoire")
     private String firstName;
 
-    @NotBlank(message = "Le nom est obligatoire")
     private String lastName;
 
     @NotBlank(message = "Le username est obligatoire")
@@ -49,7 +48,7 @@ public class User implements UserDetails {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     // EAGER, will directly fetch the roles, longer loading time
