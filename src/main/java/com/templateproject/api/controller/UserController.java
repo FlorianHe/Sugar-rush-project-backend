@@ -52,11 +52,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public LoginResponse createUser(@RequestBody User user) {
-        User newUser = userService.createUser(user);
-        String email = newUser.getUsername();
-        String password = newUser.getPassword();
-        return userService.login(email, password);
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
     @PostMapping("/login")
