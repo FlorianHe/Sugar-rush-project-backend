@@ -52,23 +52,18 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public LoginResponse createUser(User user) {
-        String email = user.getUsername();
-        String password = user.getPassword();
-        user = userService.createUser(user);
-        String token = userService.login(email, password);
-        LoginResponse response = new LoginResponse(token, user);
-        return response;
+    public LoginResponse createUser(@RequestBody User user) {
+        User newUser = userService.createUser(user);
+        String email = newUser.getUsername();
+        String password = newUser.getPassword();
+        return userService.login(email, password);
     }
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest loginRequest) {
         String email = loginRequest.getEmail();
         String password = loginRequest.getPassword();
-        String token = userService.login(email, password);
-        User user = userRepository.findByEmail(email).get();
-        LoginResponse response = new LoginResponse(token, user);
-        return response;
+        return userService.login(email, password);
     }
 
     @GetMapping("/users/{id}/articles")

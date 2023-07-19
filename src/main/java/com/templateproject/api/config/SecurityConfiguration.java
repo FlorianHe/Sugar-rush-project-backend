@@ -57,12 +57,11 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/users/*/comments", "/users/*/articles", "/comments/**").hasAuthority("SCOPE_ROLE_ADMIN")
                         .requestMatchers(HttpMethod.POST, "/articles/*/comments", "/profiles/**", "/sugar-datas/**").hasAuthority("SCOPE_ROLE_USER")
                         .requestMatchers(HttpMethod.POST, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
-                        
+                        .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()                        
                         .requestMatchers(HttpMethod.PUT, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
                         .requestMatchers(HttpMethod.PUT, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/comments/**").hasAuthority("SCOPE_ROLE_USER")
                         .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN")
-                        .requestMatchers("/register", "/login").permitAll()
                         .anyRequest().authenticated();
                 })
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))

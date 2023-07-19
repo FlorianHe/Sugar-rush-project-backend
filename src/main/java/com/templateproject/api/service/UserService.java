@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.templateproject.api.OffsetBasedPageRequest;
 import com.templateproject.api.entity.Comment;
+import com.templateproject.api.entity.LoginResponse;
 import com.templateproject.api.entity.Role;
 import com.templateproject.api.entity.User;
 import com.templateproject.api.repository.CommentRepository;
@@ -74,10 +75,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public String login(String email, String password) {
+    public LoginResponse login(String email, String password) {
         Authentication authentication = this.authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password));
-        return tokenService.generateToken(authentication);
+        String token = tokenService.generateToken(authentication);
+        User user = userRepository.findByEmail(email).get();
+        return new LoginResponse(token, user);
     }
 
     public List<Comment> getCommentsByUser(Long userId, int limit, int offset) {
