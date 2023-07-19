@@ -88,7 +88,7 @@ public class ArticleService {
         return articleRepository.findByCategory(category, pageable);
     }
 
-        public List<Article> getArticlesByUser(Long id, int limit, int offset) {
+    public List<Article> getArticlesByUser(Long id, int limit, int offset) {
         User user = userRepository.findById(id).orElse(null);
         Pageable pageable = new OffsetBasedPageRequest(limit, offset);
         return articleRepository.findByAuthor(user, pageable);

@@ -4,8 +4,8 @@ import com.templateproject.api.entity.Article;
 import com.templateproject.api.entity.Comment;
 import com.templateproject.api.entity.LoginRequest;
 import com.templateproject.api.entity.LoginResponse;
+import com.templateproject.api.entity.Profile;
 import com.templateproject.api.entity.User;
-import com.templateproject.api.repository.UserRepository;
 
 import java.util.List;
 
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.templateproject.api.service.ArticleService;
+import com.templateproject.api.service.ProfileService;
 import com.templateproject.api.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,12 +30,12 @@ public class UserController {
 
     private final UserService userService;
     private final ArticleService articleService;
-    private final UserRepository userRepository;
+    private final ProfileService profileService;
 
-    public UserController(UserService userService, ArticleService articleService, UserRepository userRepository) {
+    public UserController(UserService userService, ArticleService articleService,ProfileService profileService) {
         this.userService = userService;
         this.articleService = articleService;
-        this.userRepository = userRepository;
+        this.profileService = profileService;
     }
 
     @Operation(summary = "Find users", description = "Find all users")
@@ -70,9 +71,14 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}/comments")
-    public List<Comment> getCommentsByUserId(@PathVariable("id") Long id, @RequestParam(defaultValue = "10") int limit,
+    public List<Comment> getCommentsByUser(@PathVariable("id") Long id, @RequestParam(defaultValue = "10") int limit,
             @RequestParam(defaultValue = "0") int offset) {
         return userService.getCommentsByUser(id, limit, offset);
+    }
+
+    @GetMapping("/users/{id}/profiles")
+    public List<Profile> getProfilesByUser(@PathVariable("id") Long id) {
+        return profileService.getProfilesByUser(id);
     }
 
 }

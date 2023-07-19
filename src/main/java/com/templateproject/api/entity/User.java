@@ -67,6 +67,10 @@ public class User implements UserDetails {
     @JsonIgnore
     private List<Comment> listComment;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Profile> profiles;
+
     public User() {
     }
 
@@ -162,12 +166,28 @@ public class User implements UserDetails {
         return true;
     }
 
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
     public List<Comment> getListComment() {
         return listComment;
     }
 
     public void setListComment(List<Comment> listComment) {
         this.listComment = listComment;
+    }
+
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
     }
 
 }
