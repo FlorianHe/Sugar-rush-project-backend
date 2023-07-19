@@ -165,10 +165,6 @@ public class Article {
         this.listParagraphs = listParagraphs;
     }
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
     public User getAuthor() {
         return author;
     }

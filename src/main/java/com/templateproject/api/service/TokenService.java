@@ -22,7 +22,7 @@ public class TokenService {
         this.jwtEncoder = jwtEncoder;
     }
 
-    //Use Authentication class from security ???
+    //Use Authentication class from security
     public String generateToken(Authentication auth) {
         // We want to create a JWT token
         // Choose and set the algorithm used to sign the token (here HS256) and build the header

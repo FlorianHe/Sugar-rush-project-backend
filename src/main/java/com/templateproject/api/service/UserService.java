@@ -47,7 +47,6 @@ public class UserService implements UserDetailsService {
         this.tokenService = tokenService;
     }
 
-    // Security method to implement
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         return userRepository.findByEmail(userEmail)
