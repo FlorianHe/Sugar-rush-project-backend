@@ -164,4 +164,16 @@ public class Article {
     public void setListParagraphs(List<Paragraph> listParagraphs) {
         this.listParagraphs = listParagraphs;
     }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 }
