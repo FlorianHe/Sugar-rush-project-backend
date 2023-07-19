@@ -27,16 +27,16 @@ public class Article {
     private boolean isMain;
 
     private String title;
-    private String slug;
-    private Date publicationDate;
-    private Date modificationDate;
 
+    private String slug;
+
+    private Date publicationDate;
+    
+    private Date modificationDate;
+    
     private String leads;
 
     private String publicationImage;
-
-    private String author;
-
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -52,6 +52,11 @@ public class Article {
     @OneToMany(mappedBy = "article")
     private List<Paragraph> listParagraphs;
 
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User author;
+
     public Article(boolean isMain, String title, String slug,
             String leads, String publicationImage, String author, Category category) {
         this.isMain = isMain;
@@ -62,7 +67,6 @@ public class Article {
         this.leads = leads;
        
         this.publicationImage = publicationImage;
-        this.author = author;
         this.category = category;
     }
 
@@ -129,14 +133,6 @@ public class Article {
         this.publicationImage = publicationImage;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getCategorySlug() {
         return this.category.getSlug();
     }
@@ -167,5 +163,13 @@ public class Article {
 
     public void setListParagraphs(List<Paragraph> listParagraphs) {
         this.listParagraphs = listParagraphs;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

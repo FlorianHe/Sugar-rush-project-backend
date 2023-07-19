@@ -16,7 +16,6 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
 
-
     public CommentService(CommentRepository commentRepository, ArticleRepository articleRepository) {
         this.commentRepository = commentRepository;
         this.articleRepository = articleRepository;
@@ -26,12 +25,9 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
-    // TODO Add a method to find all comments by the user id
-    // TODO List<Comment> getAllCommentsByUserId(Long userId);
-
     public Comment createComment(Comment comment, Long id) {
         Article article = articleRepository.getReferenceById(id);
- 
+
         // Définir l'article pour le commentaire
         comment.setArticle(article);
         comment.setCreation_date(new Date());
