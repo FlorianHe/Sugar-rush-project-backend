@@ -40,4 +40,10 @@ public class CategoryController {
             @RequestParam(defaultValue = "0") int offset) {
         return articleService.findArticlesByCategory(slug, limit, offset);
     }
+
+    @GetMapping("/{slug}/articles/side")
+    public List<Article> getArticlesSideByCategory(@PathVariable String slug, @RequestParam Long id, @RequestParam(defaultValue = "4") int limit,
+            @RequestParam(defaultValue = "0") int offset) {
+                return articleService.findArticlesSideByCategory(slug, id, limit, offset);
+    }
 }
