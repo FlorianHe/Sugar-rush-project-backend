@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
 
 @Entity
 public class Article {
@@ -31,9 +30,9 @@ public class Article {
     private String slug;
 
     private Date publicationDate;
-    
+
     private Date modificationDate;
-    
+
     private String leads;
 
     private String publicationImage;
@@ -42,19 +41,17 @@ public class Article {
     @JoinColumn(name = "category_id")
     private Category category;
 
-         
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
-    
-    
-    @OneToMany(mappedBy = "article")
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Paragraph> listParagraphs;
 
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
-    @JoinColumn(name= "user_id")
+    @JoinColumn(name = "user_id")
     private User author;
 
     public Article(boolean isMain, String title, String slug,
@@ -65,7 +62,7 @@ public class Article {
         this.publicationDate = new Date();
         this.modificationDate = new Date();
         this.leads = leads;
-       
+
         this.publicationImage = publicationImage;
         this.category = category;
     }
@@ -124,7 +121,7 @@ public class Article {
     public void setLeads(String leads) {
         this.leads = leads;
     }
-    
+
     public String getPublicationImage() {
         return publicationImage;
     }
@@ -156,7 +153,7 @@ public class Article {
     public void setListComments(List<Comment> listComments) {
         this.listComments = listComments;
     }
-    
+
     public List<Paragraph> getListParagraphs() {
         return listParagraphs;
     }
