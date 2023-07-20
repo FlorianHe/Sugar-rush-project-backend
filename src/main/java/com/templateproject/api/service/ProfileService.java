@@ -31,6 +31,12 @@ public class ProfileService {
         return profileRepository.save(profile);
     }
 
+    public Profile createProfileByUser(Long id, Profile profile) {
+        User user = userRepository.getReferenceById(id);
+        profile.setUser(user);
+        return profileRepository.save(profile);
+    }
+
     public Profile update(Long id, Profile profile) {
         Profile profileToUpdate = profileRepository.findById(id).get();
         profileToUpdate.setName(profile.getName());

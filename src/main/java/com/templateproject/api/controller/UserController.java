@@ -81,4 +81,8 @@ public class UserController {
         return profileService.getProfilesByUser(id);
     }
 
+    @PostMapping("/users/{id}/profiles")
+    public Profile creatProfile(@PathVariable("id") Long id, @RequestBody Profile profile) {
+        return profileService.createProfileByUser(id, profile);
+    }
 }

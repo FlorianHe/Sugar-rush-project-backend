@@ -53,7 +53,6 @@ public class User implements UserDetails {
 
     // EAGER, will directly fetch the roles, longer loading time
     // Mandatory for security users and roles management
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role_junction", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> authorities = new HashSet<Role>();
