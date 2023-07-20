@@ -19,4 +19,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     Optional<Article> findFirstByIsMainTrueOrderByPublicationDateDesc();
 
     List<Article> findByCategoryAndIdNot(Category category, Long excludeId, Pageable pageable);
+    
+    public List<Article> findByTitleContaining(String text); 
 }

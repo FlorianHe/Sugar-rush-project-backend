@@ -103,5 +103,9 @@ public class ArticleService {
         Pageable pageable = new OffsetBasedPageRequest(limit, offset);
         return articleRepository.findByAuthor(user, pageable);
     }
+    
+    public List<Article> getByKeyword(String keyword){
+        return articleRepository.findByTitleContaining (keyword);
+       }
 
 }
