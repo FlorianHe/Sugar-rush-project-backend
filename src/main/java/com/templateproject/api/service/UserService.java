@@ -89,4 +89,18 @@ public class UserService implements UserDetailsService {
 
         return commentRepository.findCommentsByUser(user, pageable);
     }
+
+    public User updateUser(Long id, User user) {
+        User userToUpdate = userRepository.findById(id).get();
+        userToUpdate.setFirstName(user.getFirstName());
+        userToUpdate.setLastName(user.getLastName());
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(userToUpdate);
+    }
+
+    public boolean deleteUser(Long id) {
+        userRepository.deleteById(id);
+        return true;
+    }
 }

@@ -60,7 +60,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()                        
                         .requestMatchers(HttpMethod.PUT, "/comments/**", "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
                         .requestMatchers(HttpMethod.PUT, "/articles/**").hasAuthority("SCOPE_ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/comments/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
+                        .requestMatchers(HttpMethod.DELETE, "/comments/**", "/users/**", "/profiles/**").hasAuthority("SCOPE_ROLE_USER")
                         .requestMatchers(HttpMethod.DELETE, "**").hasAuthority("SCOPE_ROLE_ADMIN")
                         .anyRequest().authenticated();
                 })

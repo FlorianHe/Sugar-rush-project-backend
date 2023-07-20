@@ -9,9 +9,11 @@ import com.templateproject.api.entity.User;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +34,7 @@ public class UserController {
     private final ArticleService articleService;
     private final ProfileService profileService;
 
-    public UserController(UserService userService, ArticleService articleService,ProfileService profileService) {
+    public UserController(UserService userService, ArticleService articleService, ProfileService profileService) {
         this.userService = userService;
         this.articleService = articleService;
         this.profileService = profileService;
@@ -84,5 +86,15 @@ public class UserController {
     @PostMapping("/users/{id}/profiles")
     public Profile creatProfile(@PathVariable("id") Long id, @RequestBody Profile profile) {
         return profileService.createProfileByUser(id, profile);
+    }
+
+    @PutMapping("/users/{id}")
+    public User updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public boolean deleteUser(@PathVariable("id") Long id) {
+        return userService.deleteUser(id);
     }
 }
