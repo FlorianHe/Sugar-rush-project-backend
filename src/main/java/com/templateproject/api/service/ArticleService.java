@@ -52,6 +52,10 @@ public class ArticleService {
         return articleRepository.findById(id).get();
     }
 
+    public Article getArticleMain() {
+        return articleRepository.findFirstByIsMainTrueOrderByPublicationDateDesc().get();
+    }
+
     public Article create(Article article) {
         List<Paragraph> listParagraphs = article.getListParagraphs();
         Article articleReturn = articleRepository.save(article);
@@ -86,6 +90,12 @@ public class ArticleService {
         Category category = categoryService.findCategoryBySlug(categorySlug);
         Pageable pageable = new OffsetBasedPageRequest(limit, offset);
         return articleRepository.findByCategory(category, pageable);
+    }
+
+    public List<Article> findArticlesSideByCategory(String categorySlug, Long id, int limit, int offset) {
+        Category category = categoryService.findCategoryBySlug(categorySlug);
+        Pageable pageable = new OffsetBasedPageRequest(limit, offset);
+        return articleRepository.findByCategoryAndIdNot(category, id, pageable);
     }
 
         public List<Article> getArticlesByUser(Long id, int limit, int offset) {

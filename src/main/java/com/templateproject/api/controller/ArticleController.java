@@ -38,6 +38,11 @@ public class ArticleController {
         return articleService.show(id);
     }
 
+    @GetMapping("/main")
+    public Article getArticleMain() {
+        return articleService.getArticleMain();
+    }
+
     @PostMapping
     public Article create(@RequestBody Article article) {
         return articleService.create(article);
