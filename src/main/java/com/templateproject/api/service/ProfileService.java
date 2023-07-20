@@ -32,7 +32,7 @@ public class ProfileService {
     }
 
     public Profile createProfileByUser(Long id, Profile profile) {
-        User user = userRepository.getReferenceById(id);
+        User user = userRepository.findById(id).get();
         profile.setUser(user);
         return profileRepository.save(profile);
     }
