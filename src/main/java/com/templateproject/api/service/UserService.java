@@ -92,12 +92,20 @@ public class UserService implements UserDetailsService {
 
     public User updateUser(Long id, User user) {
         User userToUpdate = userRepository.findById(id).get();
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (user.getFirstName() != null){
+            userToUpdate.setFirstName(user.getFirstName());
+        }
+        if (user.getLastName() != null){
+            userToUpdate.setLastName(user.getLastName());
+        }
+        if (user.getEmail() != null) {
+            userToUpdate.setEmail(user.getEmail());
+        }
+        if (user.getPassword() != null){
+            userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         return userRepository.save(userToUpdate);
-    }
+    }  
 
     public boolean deleteUser(Long id) {
         userRepository.deleteById(id);
