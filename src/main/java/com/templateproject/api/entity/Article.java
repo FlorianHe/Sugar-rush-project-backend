@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
 
 @Entity
 public class Article {
@@ -27,43 +26,44 @@ public class Article {
     private boolean isMain;
 
     private String title;
+
     private String slug;
+
     private Date publicationDate;
+
     private Date modificationDate;
 
     private String leads;
 
-    @Column(columnDefinition = "TEXT")
-    private String content;
-
     private String publicationImage;
-
-    private String author;
-
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Transient
-    private String categorySlug;
-
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     @JsonManagedReference
     @JsonIgnore
     private List<Comment> listComments;
 
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
+    private List<Paragraph> listParagraphs;
+
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
+
     public Article(boolean isMain, String title, String slug,
-            String leads, String content, String publicationImage, String author, Category category) {
+            String leads, String publicationImage, String author, Category category) {
         this.isMain = isMain;
         this.title = title;
         this.slug = slug;
         this.publicationDate = new Date();
         this.modificationDate = new Date();
         this.leads = leads;
-        this.content = content;
+
         this.publicationImage = publicationImage;
-        this.author = author;
         this.category = category;
     }
 
@@ -122,28 +122,12 @@ public class Article {
         this.leads = leads;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getPublicationImage() {
         return publicationImage;
     }
 
     public void setPublicationImage(String publicationImage) {
         this.publicationImage = publicationImage;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getCategorySlug() {
@@ -168,5 +152,21 @@ public class Article {
 
     public void setListComments(List<Comment> listComments) {
         this.listComments = listComments;
+    }
+
+    public List<Paragraph> getListParagraphs() {
+        return listParagraphs;
+    }
+
+    public void setListParagraphs(List<Paragraph> listParagraphs) {
+        this.listParagraphs = listParagraphs;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

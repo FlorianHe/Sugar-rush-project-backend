@@ -38,6 +38,11 @@ public class ArticleController {
         return articleService.show(id);
     }
 
+    @GetMapping("/main")
+    public Article getArticleMain() {
+        return articleService.getArticleMain();
+    }
+
     @PostMapping
     public Article create(@RequestBody Article article) {
         return articleService.create(article);
@@ -62,6 +67,13 @@ public class ArticleController {
     @PostMapping("/{id}/comments")
     public Comment createComment(@PathVariable("id") Long id, @RequestBody Comment commentDto) {
         return commentService.createComment(commentDto, id);
+    }
+    
+    @GetMapping("/search")
+    public List<Article> searchArticle(String keyword) {
+
+        List<Article> list = articleService.getByKeyword(keyword);
+        return list;
     }
 
 }
