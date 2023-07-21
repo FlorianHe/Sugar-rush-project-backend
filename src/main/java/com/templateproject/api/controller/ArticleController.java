@@ -68,5 +68,12 @@ public class ArticleController {
     public Comment createComment(@PathVariable("id") Long id, @RequestBody Comment commentDto) {
         return commentService.createComment(commentDto, id);
     }
+    
+    @GetMapping("/search")
+    public List<Article> searchArticle(String keyword) {
+
+        List<Article> list = articleService.getByKeyword(keyword);
+        return list;
+    }
 
 }
