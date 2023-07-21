@@ -3,14 +3,16 @@ package com.templateproject.api.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -24,12 +26,13 @@ public class Profile {
     private String logo;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "profile")
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.REMOVE)
     private List<SugarData> sugarDatas;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id")
-    // private User user;
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Profile() {
     }
@@ -76,4 +79,11 @@ public class Profile {
         this.sugarDatas = sugarDatas;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
