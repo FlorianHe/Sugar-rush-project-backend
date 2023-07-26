@@ -116,12 +116,12 @@ public class DbInit {
                         Article article7 = new Article(false, "Bien manger sans se ruiner",
                                         "bien-manger-sans-se-ruiner",
                                         "Petites astuces bonnes pour tous, pour l\u2019environnement et pour le porte-monnaie.",
-                                        "https://www.mangerbouger.fr/var/mb/storage/images/_aliases/reference/2/6/3/6/6362-1-eng-GB/activite_physique_badminton.jpg",
+                                        "https://img.freepik.com/photos-gratuite/gros-plan-sac-reutilisable-epicerie-herbe_23-2148523381.jpg?w=826&t=st=1689761312~exp=1689761912~hmac=30140aa1f44fd4bdd546694cb23c6748ed2ca3ed2974b34afeae9d3bfd296fab",
                                         Florian, miam);
                         Article article8 = new Article(false, "Sucre est aussi le nom d'une ville !",
                                         "sucre-est-aussi-le-nom-d'une-ville",
                                         "Le sucre c\u00F4t\u00E9 g\u00E9ographie.",
-                                        "https://www.mangerbouger.fr/var/mb/storage/images/_aliases/reference/2/6/3/6/6362-1-eng-GB/activite_physique_badminton.jpg",
+                                        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Sucre%2C_Bolivia_-_%2824545082440%29.jpg/1280px-Sucre%2C_Bolivia_-_%2824545082440%29.jpg",
                                         Patrick, fun);
                         Article article9 = new Article(false, "Sucre et \u00E9conomie", "sucre-et-enonomie",
                                         "Le sucre : un ingr\u00E9dient qui nourrit l'\u00E9conomie mondiale",
