@@ -74,7 +74,7 @@ public class DbInit {
                         Category sport = new Category("Sport", "sport");
                         Category carie = new Category("Carie", "carie");
                         Category miam = new Category("Miam", "miam");
-                        Category eco = new Category("Ça coute bonbon", "ca-coute-bonbon");
+                        Category eco = new Category("Ça coûte bonbon", "ca-coute-bonbon");
                         fun = categoryRepository.save(fun);
                         sport = categoryRepository.save(sport);
                         carie = categoryRepository.save(carie);
@@ -134,7 +134,7 @@ public class DbInit {
                                         "http://json.helaine.eu/CandyCrush.jpg", Florian, fun);
 
                         Article article11 = new Article(false,
-                                        "La recette du caramel maison \\u00E0 la casserole",
+                                        "La recette du caramel maison \u00E0 la casserole",
                                         "recette-caramel-maison-a-la-casserole",
                                         "La recette du caramel maison \u00E0 la casserole",
                                         "https://media.istockphoto.com/id/516358950/fr/photo/partie-de-sucre-blanc.jpg?s=612x612&w=0&k=20&c=PQdHZX3hIDHlQQHHoHJNAGxyQun5ORH_4kXJteRYyUU=",
@@ -176,9 +176,9 @@ public class DbInit {
                                         Patrick, carie);
 
                         Article article17 = new Article(false,
-                                        "L'Effet \"Sugar Rush\" : Mythe ou R\u00E9alit\u00E9 ?",
+                                        "L'Effet \u00ABSugar Rush\u00BB : Mythe ou R\u00E9alit\u00E9 ?",
                                         "leffet-sugar-rush-mythe-ou-ralit",
-                                        "L'Effet \"Sugar Rush\" : Mythe ou R\u00E9alit\u00E9 ?",
+                                        "L'Effet \u00ABSugar Rush\u00BB : Mythe ou R\u00E9alit\u00E9 ?",
                                         "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/324896_1100-1100x628.jpg",
                                         Alexandre, fun);
                         Article article18 = new Article(false,
@@ -393,7 +393,7 @@ public class DbInit {
                                                         + //
                                                         "Le sucre rapide est indispensable pour le sportif, moyen de rester au top de sa forme en boostant plus efficacement son organisme. \r\n"
                                                         + //
-                                                        "La consommation de sucre lent est indispensable afin d\u2019\u00E9vier \"le coup de barre\", \r\n"
+                                                        "La consommation de sucre lent est indispensable afin d\u2019\u00E9vier \u00ABle coup de barre\u00BB, \r\n"
                                                         + //
                                                         "ces pertes de r\u00E9gimes et de vigilance trop soudaines li\u00E9es \u00E0 la baisse de glyc\u00E9mie\r\n"
                                                         + //
@@ -444,7 +444,7 @@ public class DbInit {
                                         'P',
                                         "Toutes les marques sont concern\u00E9es : les premiers prix, mais aussi les marques distributeurs et les marques nationales.\r\n"
                                                         + //
-                                                        "En cause, la hausse des cours du sucre au niveau mondial : \"Le cours du sucre n'a jamais \u00E9t\u00E9 aussi haut\" , explique Emmanuel Cannes.\r\n"
+                                                        "En cause, la hausse des cours du sucre au niveau mondial : \u00ABLe cours du sucre n'a jamais \u00E9t\u00E9 aussi haut\u00BB , explique Emmanuel Cannes.\r\n"
                                                         + //
                                                         "Il a quasiment doubl\u00E9 entre avril 2020 et la fin 2022, passant de 8 \u00E0 9 cents de dollar la livre \u00E0 19 cents la livre.\r\n"
                                                         + //
@@ -474,7 +474,7 @@ public class DbInit {
                         Paragraph art13paragraph5 = new Paragraph(
                                         "Inciter les producteurs \u00E0 ne surtout pas se d\u00E9tourner de la betterave !",
                                         'P',
-                                        "L'interdiction des n\u00E9onicotino\u00EFdes, les insecticides \"tueurs d'abeilles\", pour les producteurs de betteraves fran\u00E7ais, va faire baisser les rendements des cultivateurs, \r\n"
+                                        "L'interdiction des n\u00E9onicotino\u00EFdes, les insecticides \u00ABtueurs d'abeilles\u00BB, pour les producteurs de betteraves fran\u00E7ais, va faire baisser les rendements des cultivateurs, \r\n"
                                                         + //
                                                         "et donc augmenter les prix. Dans le m\u00EAme temps, le co\u00FBt des engrais a lui aussi \u00E9galement explos\u00E9.\r\n"
                                                         + //
@@ -489,7 +489,7 @@ public class DbInit {
                                                         + //
                                                         "Elle est devenue le premier poste de d\u00E9pense, devant m\u00EAme l\u2019achat des betteraves.\r\n"
                                                         + //
-                                                        "\"Les sucreries sont tr\u00E8s \u00E9nergivores, notamment en gaz\", pr\u00E9cise Christian Spiegeleer \"... dont le prix a \u00E9t\u00E9 multipli\u00E9 par trois ou quatre depuis la guerre en Ukraine\".",
+                                                        "\u00ABLes sucreries sont tr\u00E8s \u00E9nergivores, notamment en gaz\u00BB, pr\u00E9cise Christian Spiegeleer \u00AB... dont le prix a \u00E9t\u00E9 multipli\u00E9 par trois ou quatre depuis la guerre en Ukraine\u00BB.",
                                         article13);
                         Paragraph art13paragraph7 = new Paragraph("Envol\u00E9e qui devrait donc se poursuivre en 2023",
                                         'C',
@@ -598,7 +598,7 @@ public class DbInit {
                                                         + //
                                                         "Certaines \u00E9tapes sont volontairement d\u00E9s\u00E9quilibr\u00E9es (les 2 premi\u00E8res notamment), car l\u2019itin\u00E9raire a \u00E9t\u00E9 pens\u00E9 pour bivouaquer \u00E0 des endroits sp\u00E9cifiques, il peut aussi \u00EAtre r\u00E9\u00E9quilibr\u00E9 pour \u00E9viter d\u2019avoir des \u00E9tapes trop longues.\r\n"
                                                         + //
-                                                        "\u00C0 noter que nous avons effectu\u00E9 ce tour d\u00E9but octobre et que nous avons termin\u00E9 une des \u00E9tapes dans la nuit (la descente du Sentiero Ezio Nicoli apr\u00E8s les lacs de Forcioline) car nous nous sommes fait surprendre par la \"via ferrata\" du Pas des Sagnettes. \r\n"
+                                                        "\u00C0 noter que nous avons effectu\u00E9 ce tour d\u00E9but octobre et que nous avons termin\u00E9 une des \u00E9tapes dans la nuit (la descente du Sentiero Ezio Nicoli apr\u00E8s les lacs de Forcioline) car nous nous sommes fait surprendre par la \u00ABvia ferrata\u00BB du Pas des Sagnettes. \r\n"
                                                         + //
                                                         "En \u00E9t\u00E9 lorsque les journ\u00E9es sont plus longues \u00E7a doit passer mais attention donc \u00E0 la longueur de certaines \u00E9tapes.",
                                         article15);
@@ -614,7 +614,7 @@ public class DbInit {
                                                         "\r\n" + //
                                                         "\u00C0 noter que nous avons termin\u00E9 le dernier tiers de l\u2019ascension dans la nuit \u00E0 la frontale donc c\u2019\u00E9tait forc\u00E9ment moins ais\u00E9 qu\u2019en plein jour.\r\n"
                                                         + //
-                                                        "Nous avons atteint un premier bivouac que nous avons pens\u00E9 \u00EAtre celui du sommet mais en r\u00E9alit\u00E9 le bivouac principal du sommet, le plus \"confort\" (car il y a plus de place et il est beaucoup mieux abrit\u00E9) est un peu plus loin, au bout d\u2019une cr\u00EAte un peu a\u00E9rienne (que nous n\u2019aurions pas aim\u00E9 franchir de nuit).\r\n"
+                                                        "Nous avons atteint un premier bivouac que nous avons pens\u00E9 \u00EAtre celui du sommet mais en r\u00E9alit\u00E9 le bivouac principal du sommet, le plus \u00ABconfort\u00BB (car il y a plus de place et il est beaucoup mieux abrit\u00E9) est un peu plus loin, au bout d\u2019une cr\u00EAte un peu a\u00E9rienne (que nous n\u2019aurions pas aim\u00E9 franchir de nuit).\r\n"
                                                         + //
                                                         "\r\n" + //
                                                         "Si comme nous, vous souhaitez dormir au sommet du Pain de Sucre, choisissez une nuit o\u00F9 la m\u00E9t\u00E9o est certaine, o\u00F9 la visibilit\u00E9 est bonne et o\u00F9 le vent n\u2019est pas trop fort. Ne pas oublier que le sommet est \u00E0 3200m et que malgr\u00E9 le bivouac de fortune il est tr\u00E8s expos\u00E9 au vent. On ne peut bien s\u00FBr pas planter de tente en haut, donc attention aux temp\u00E9ratures !",
@@ -627,10 +627,10 @@ public class DbInit {
                                                         "D\u00E9nivel\u00E9 positif : 450 m\r\n" + //
                                                         "D\u00E9nivel\u00E9 n\u00E9gatif : 600 m\r\n" + //
                                                         "Bivouac juste de dessous du Pic For\u00E9ant\r\n" + //
-                                                        "Le matin, nous repartons au d\u00E9but par le \"chemin\" par lequel nous sommes arriv\u00E9s puis nous en suivons ensuite un autre qui part plus \u00E0 droite et qui est mat\u00E9rialis\u00E9 par des marques rouges, en direction du col Vieux (2 806m). Une fois au col nous rejoignons le GR et nous descendons jusqu\u2019au lac For\u00E9ant.\r\n"
+                                                        "Le matin, nous repartons au d\u00E9but par le \u00ABchemin\u00BB par lequel nous sommes arriv\u00E9s puis nous en suivons ensuite un autre qui part plus \u00E0 droite et qui est mat\u00E9rialis\u00E9 par des marques rouges, en direction du col Vieux (2 806m). Une fois au col nous rejoignons le GR et nous descendons jusqu\u2019au lac For\u00E9ant.\r\n"
                                                         + //
                                                         "\r\n" + //
-                                                        "Une fois le lac pass\u00E9 nous poursuivons encore quelques centaines de m\u00E8tres sur le GR jusqu\u2019\u00E0 rencontrer sur la gauche le lit d\u2019un torrent ass\u00E9ch\u00E9 (indiqu\u00E9 sur la carte IGN). \u00C0 noter que ce \"chemin\" n\u2019est pas mat\u00E9rialis\u00E9 sur l\u2019IGN mais il l\u2019est sur l\u2019open topo map. Malgr\u00E9 \u00E7a, le fameux \"chemin\" n\u2019existe pas vraiment, il vaut mieux un GPS pour s\u2019orienter et prendre au moins raide d\u2019abord en suivant le lit de la rivi\u00E8re ass\u00E9ch\u00E9e puis dans les pentes herbeuses. De cette fa\u00E7on on atteint d\u2019abord le premier des Lacs de l\u2019Eychassier sur sa rive droite puis on poursuit dans les pentes herbeuses jusqu\u2019\u00E0 retrouver un chemin peu marqu\u00E9 qui nous m\u00E8nera jusqu\u2019au plus grand des Lacs de l\u2019Eychassier.\r\n"
+                                                        "Une fois le lac pass\u00E9 nous poursuivons encore quelques centaines de m\u00E8tres sur le GR jusqu\u2019\u00E0 rencontrer sur la gauche le lit d\u2019un torrent ass\u00E9ch\u00E9 (indiqu\u00E9 sur la carte IGN). \u00C0 noter que ce \u00ABchemin\u00BB n\u2019est pas mat\u00E9rialis\u00E9 sur l\u2019IGN mais il l\u2019est sur l\u2019open topo map. Malgr\u00E9 \u00E7a, le fameux \u00ABchemin\u00BB n\u2019existe pas vraiment, il vaut mieux un GPS pour s\u2019orienter et prendre au moins raide d\u2019abord en suivant le lit de la rivi\u00E8re ass\u00E9ch\u00E9e puis dans les pentes herbeuses. De cette fa\u00E7on on atteint d\u2019abord le premier des Lacs de l\u2019Eychassier sur sa rive droite puis on poursuit dans les pentes herbeuses jusqu\u2019\u00E0 retrouver un chemin peu marqu\u00E9 qui nous m\u00E8nera jusqu\u2019au plus grand des Lacs de l\u2019Eychassier.\r\n"
                                                         + //
                                                         "\r\n" + //
                                                         "De l\u00E0 c\u2019est un peu plus \u00E9vident, nous suivons le chemin \u00E0 gauche qui passe devant le lac en direction du col de L\u2019Eychassier (2 917 m). Puis en continuant \u00E0 monter sur ce m\u00EAme chemin, nous atteignons la cr\u00EAte. On suit l\u2019ar\u00EAte sur le chemin marqu\u00E9, d\u2019abord large puis un peu plus a\u00E9rienne et min\u00E9rale, et enfin devenant large et herbeuse \u00E0 nouveau. Avant d\u2019arriver au Pic For\u00E9ant, nous avons trouv\u00E9 un espace herbeux plat sur la cr\u00EAte o\u00F9 nous avons pos\u00E9 notre tente, juste en face du Viso et du Pain de Sucre.\r\n"
@@ -652,7 +652,7 @@ public class DbInit {
                                                         "Apr\u00E8s avoir lev\u00E9 le camp, nous repassons pr\u00E8s du Pic For\u00E9ant pour entamer la descente, qui sera d\u2019ailleurs la th\u00E9matique ma\u00EEtresse de la premi\u00E8re partie de la journ\u00E9e.\r\n"
                                                         + //
                                                         "\r\n" + //
-                                                        "Au d\u00E9but il faudra suivre la ligne de cr\u00EAte qui descend en direction des lacs de l\u2019Eychassier. Nous passons \u00E0 c\u00F4t\u00E9 du plus petit lac o\u00F9 nous finissons par r\u00E9cup\u00E9rer le chemin par lequel nous \u00E9tions arriv\u00E9es la veille. Nous continuons sur ce \"chemin\" qui n\u2019en est pas vraiment un jusqu\u2019\u00E0 r\u00E9cup\u00E9rer le sentier du GR58. Arriv\u00E9 sur le sentier du GR58, nous prenons \u00E0 gauche, au nord donc et marchons jusqu\u2019au lac Egorg\u00E9ou et y faisons une pause.\r\n"
+                                                        "Au d\u00E9but il faudra suivre la ligne de cr\u00EAte qui descend en direction des lacs de l\u2019Eychassier. Nous passons \u00E0 c\u00F4t\u00E9 du plus petit lac o\u00F9 nous finissons par r\u00E9cup\u00E9rer le chemin par lequel nous \u00E9tions arriv\u00E9es la veille. Nous continuons sur ce \u00ABchemin\u00BB qui n\u2019en est pas vraiment un jusqu\u2019\u00E0 r\u00E9cup\u00E9rer le sentier du GR58. Arriv\u00E9 sur le sentier du GR58, nous prenons \u00E0 gauche, au nord donc et marchons jusqu\u2019au lac Egorg\u00E9ou et y faisons une pause.\r\n"
                                                         + //
                                                         "\r\n" + //
                                                         "\u00C0 noter d\u2019ailleurs qu\u2019une grande partie des rives de ce lac est interdite aux randonneurs pour pr\u00E9server la biodiversit\u00E9 du site.\r\n"
@@ -704,7 +704,7 @@ public class DbInit {
                                                         "Notre objectif \u00E9tait de passer dans la vall\u00E9e voisine par le Passo del Sagnette (2 990m). Pour cela nous partons au sud apr\u00E8s le refuge, puis \u00E0 l\u2019intersection avec le chemin qui continue au sud dans la vall\u00E9e, nous d\u00E9vions vers l\u2019ouest et nous nous \u00E9levons en direction de ce fameux pas. Nous croisons dans le sens inverse des italiens avec casques et baudriers et nous commen\u00E7ons \u00E0 nous interroger.\r\n"
                                                         + //
                                                         "\r\n" + //
-                                                        "Plus loin, une pancarte sur le rocher indique en italien la \"Via Ferrata du Pas des Sagnettes\". Grave erreur, nous n\u2019avions pas suffisamment \u00E9tudi\u00E9 la carte et les topos et avions \"loup\u00E9\" ce petit d\u00E9tail. Par chance, je capte et je fais quelques recherche sur internet pour savoir \u00E0 quoi ressemble cette via ferrata. Je lis plusieurs topo fran\u00E7ais qui expliquent que \"\u00E7a passe\" sans \u00E9quipement avec le pied un peu montagnard. Nous d\u00E9cidons de tenter le coup.\r\n"
+                                                        "Plus loin, une pancarte sur le rocher indique en italien la \u00ABVia Ferrata du Pas des Sagnettes\u00BB. Grave erreur, nous n\u2019avions pas suffisamment \u00E9tudi\u00E9 la carte et les topos et avions \u00ABloup\u00E9\u00BB ce petit d\u00E9tail. Par chance, je capte et je fais quelques recherche sur internet pour savoir \u00E0 quoi ressemble cette via ferrata. Je lis plusieurs topo fran\u00E7ais qui expliquent que \u00AB\u00E7a passe\u00BB sans \u00E9quipement avec le pied un peu montagnard. Nous d\u00E9cidons de tenter le coup.\r\n"
                                                         + //
                                                         "\r\n" + //
                                                         "Le d\u00E9but est tr\u00E8s facile bien qu\u2019expos\u00E9, il n\u2019y a pas vraiment d\u2019escalade. Nous croisons un groupe d\u2019italiens qui nous disent que \u00E7a se complique ensuite. Nous continuons. La seconde partie est effectivement plus grimpante et bien expos\u00E9e mais il y a de nombreuses chaines pour s\u2019aider. Nous croisons un couple de fran\u00E7ais (\u00E9galement sans \u00E9quipement) qui nous rassurent en nous disant que nous sommes presque arriv\u00E9es en haut. De leur c\u00F4t\u00E9, ils venaient de faire le Viso sans \u00E9quipement... Un dernier effort et c\u2019est le sommet ! Finalement ce n\u2019\u00E9tait pas si dur que \u00E7a !\r\n"
@@ -720,7 +720,7 @@ public class DbInit {
                                                         "Il est d\u00E9j\u00E0 bien tard et d\u00E9cidons de manger avant d\u2019attaquer la descente. Nous savons d\u00E9j\u00E0 que nous allions devoir la faire en partie de nuit vu l\u2019horaire mais nous tenons \u00E0 aller tout en bas pour nous avancer un maximum en pr\u00E9vision de la journ\u00E9e du lendemain qui s\u2019annonce elle aussi \u00E9prouvante.\r\n"
                                                         + //
                                                         "\r\n" + //
-                                                        "Nous attaquons donc la descente sur ce fameux sentier Ezio Nicoli. Une descente tout bonnement inf\u00E2me, du moins de nuit (la journ\u00E9e, la vue doit \u00EAtre tr\u00E8s belle j\u2019imagine...). C\u2019est un m\u00E9lange de pierrier, d\u2019\u00E9boulis raides et parfois expos\u00E9s o\u00F9 il est difficile (\u00E0 fortiori la nuit et avec une frontale qui ne fonctionne plus) de trouver son chemin. Le \"chemin\" est marqu\u00E9 par des traces blanches et serpente, tant\u00F4t \u00E0 gauche, tant\u00F4t \u00E0 droite de la rivi\u00E8re. \u00C0 plusieurs reprises il faut \u00E9galement s\u2019aider de cha\u00EEnes pour descendre.\r\n"
+                                                        "Nous attaquons donc la descente sur ce fameux sentier Ezio Nicoli. Une descente tout bonnement inf\u00E2me, du moins de nuit (la journ\u00E9e, la vue doit \u00EAtre tr\u00E8s belle j\u2019imagine...). C\u2019est un m\u00E9lange de pierrier, d\u2019\u00E9boulis raides et parfois expos\u00E9s o\u00F9 il est difficile (\u00E0 fortiori la nuit et avec une frontale qui ne fonctionne plus) de trouver son chemin. Le \u00ABchemin\u00BB est marqu\u00E9 par des traces blanches et serpente, tant\u00F4t \u00E0 gauche, tant\u00F4t \u00E0 droite de la rivi\u00E8re. \u00C0 plusieurs reprises il faut \u00E9galement s\u2019aider de cha\u00EEnes pour descendre.\r\n"
                                                         + //
                                                         "\r\n" + //
                                                         "Au bout d\u2019un certain temps (qui a paru interminable tant nous \u00E9tions lentes sur ce terrain), nous retrouvons un chemin plus marqu\u00E9, beaucoup moins raide et plus agr\u00E9able dans l\u2019herbe, puis dans la for\u00EAt et enfin nous atteignons la jonction entre le sentier Ezio Nicoli et le chemin principal que nous prendrons le lendemain.\r\n"
@@ -757,26 +757,26 @@ public class DbInit {
                         Paragraph art15paragraph9 = new Paragraph(
                                         "JOUR 6 : Lac Blanchet sup\u00E9rieur - Col Agnel par le Col de Chamoussi\u00E8re",
                                         'P',
-                                        "\\r\\n" + //
+                                        "\r\n" + //
                                                         "\" + //\r\n" + //
-                                                        "                                                        \"Distance : 6 km\\r\\n"
+                                                        "                                                        \"Distance : 6 km\r\n"
                                                         + //
                                                         "\" + //\r\n" + //
-                                                        "                                                        \"D\\u00E9nivel\\u00E9 positif : 500 m\\r\\n"
+                                                        "                                                        \"D\u00E9nivel\u00E9 positif : 500 m\r\n"
                                                         + //
                                                         "\" + //\r\n" + //
-                                                        "                                                        \"D\\u00E9nivel\\u00E9 n\\u00E9gatif : 500 m\\r\\n"
+                                                        "                                                        \"D\u00E9nivel\u00E9 n\u00E9gatif : 500 m\r\n"
                                                         + //
                                                         "\" + //\r\n" + //
-                                                        "                                                        \"Le dernier jour sera tr\\u00E8s soft compar\\u00E9 aux pr\\u00E9c\\u00E9dents ! Normal, il faut aussi compter les 4 heures de voiture pour rentrer !\\r\\n"
+                                                        "                                                        \"Le dernier jour sera tr\u00E8s soft compar\u00E9 aux pr\u00E9c\u00E9dents ! Normal, il faut aussi compter les 4 heures de voiture pour rentrer !\r\n"
                                                         + //
                                                         "\"\r\n" + //
                                                         "                                                        + //\r\n"
                                                         + //
-                                                        "                                                        \"\\r\\n"
+                                                        "                                                        \"\r\n"
                                                         + //
                                                         "\" + //\r\n" + //
-                                                        "                                                        \"Nous partons relativement tard de notre bivouac. Nous r\\u00E9cup\\u00E9rons le sentier qui descend vers le lac Blanchet Inf\\u00E9rieur puis continuons \\u00E0 descendre jusqu\\u2019au refuge de la Blanche. Arriv\\u00E9es au refuge nous prenons un sentier qui s\\u2019\\u00E9l\\u00E8ve au nord est en direction du Col de Chamoussi\\u00E8re (2 882m). Jusqu\\u2019au col c\\u2019est facile, c\\u2019est plus ou moins tout droit m\\u00EAme si la sente est peu marqu\\u00E9e par endroit, le cheminement se devinant facilement car on a rapidement le col en vue.",
+                                                        "                                                        \"Nous partons relativement tard de notre bivouac. Nous r\u00E9cup\u00E9rons le sentier qui descend vers le lac Blanchet Inf\u00E9rieur puis continuons \u00E0 descendre jusqu\u2019au refuge de la Blanche. Arriv\u00E9es au refuge nous prenons un sentier qui s\u2019\u00E9l\u00E8ve au nord est en direction du Col de Chamoussi\u00E8re (2 882m). Jusqu\u2019au col c\u2019est facile, c\u2019est plus ou moins tout droit m\u00EAme si la sente est peu marqu\u00E9e par endroit, le cheminement se devinant facilement car on a rapidement le col en vue.",
                                         article15);
                         Paragraph art15paragraph10 = new Paragraph(
                                         "Epilogue",
@@ -790,7 +790,7 @@ public class DbInit {
                         Paragraph art16paragraph1 = new Paragraph(
                                         "D\u00E9finition",
                                         'I',
-                                        "La glyc\u00E9mie, appel\u00E9e aussi \"taux de sucre\" ou \"taux de glucose\" dans le sang, peut varier aussi chez la personne diab\u00E9tique pour plusieurs raisons : \n"
+                                        "La glyc\u00E9mie, appel\u00E9e aussi \u00ABtaux de sucre\u00BB ou \u00ABtaux de glucose\u00BB dans le sang, peut varier aussi chez la personne diab\u00E9tique pour plusieurs raisons : \n"
                                                         + //
                                                         "alimentation, traitement, activit\u00E9 physique intense, stress, \u00E9motions...\n"
                                                         + //
@@ -1096,7 +1096,7 @@ public class DbInit {
                         Paragraph art17paragraph1 = new Paragraph(
                                         "Introduction",
                                         'I',
-                                        "L'expression \"sugar rush\" (ru\u00E9e de sucre) est souvent utilis\u00E9e pour d\u00E9crire une sensation d'\u00E9nergie intense et soudaine apr\u00E8s avoir consomm\u00E9 une grande quantit\u00E9 de sucre. Beaucoup de gens croient que manger des sucreries ou boire des boissons sucr\u00E9es peut entra\u00EEner ce ph\u00E9nom\u00E8ne \u00E9nerg\u00E9tique, mais qu'en est-il vraiment ? Est-ce un v\u00E9ritable effet physiologique ou simplement un mythe ? Dans cet article, nous allons examiner de plus pr\u00E8s ce que la science nous dit \u00E0 ce sujet.",
+                                        "L'expression \u00ABsugar rush\u00BB (ru\u00E9e de sucre) est souvent utilis\u00E9e pour d\u00E9crire une sensation d'\u00E9nergie intense et soudaine apr\u00E8s avoir consomm\u00E9 une grande quantit\u00E9 de sucre. Beaucoup de gens croient que manger des sucreries ou boire des boissons sucr\u00E9es peut entra\u00EEner ce ph\u00E9nom\u00E8ne \u00E9nerg\u00E9tique, mais qu'en est-il vraiment ? Est-ce un v\u00E9ritable effet physiologique ou simplement un mythe ? Dans cet article, nous allons examiner de plus pr\u00E8s ce que la science nous dit \u00E0 ce sujet.",
                                         article17);
                         Paragraph art17paragraph2 = new Paragraph(
                                         "Le Sucre et l'\u00C9nergie",
@@ -1106,17 +1106,17 @@ public class DbInit {
                         Paragraph art17paragraph3 = new Paragraph(
                                         "Coup de Pouce \u00C9nerg\u00E9tique ?",
                                         'P',
-                                        "Selon certaines croyances populaires, une consommation importante de sucre entra\u00EEnerait une mont\u00E9e d'\u00E9nergie rapide, voire euphorique, connue sous le nom de \"sugar rush\". Cependant, les preuves scientifiques \u00E0 l'appui de cette th\u00E9orie sont limit\u00E9es. Des \u00E9tudes ont \u00E9t\u00E9 men\u00E9es pour \u00E9valuer l'effet du sucre sur l'humeur, la concentration et les niveaux d'\u00E9nergie. Une m\u00E9ta-analyse publi\u00E9e dans le \"British Journal of Nutrition\" a conclu qu'il n'y a pas de preuve significative pour soutenir l'id\u00E9e d'un \"sugar rush\". Les chercheurs ont constat\u00E9 que, bien que le sucre puisse provoquer une augmentation rapide de la glyc\u00E9mie, cette augmentation est rapidement suivie d'une baisse, ce qui peut entra\u00EEner une sensation de fatigue et de l\u00E9thargie.",
+                                        "Selon certaines croyances populaires, une consommation importante de sucre entra\u00EEnerait une mont\u00E9e d'\u00E9nergie rapide, voire euphorique, connue sous le nom de \u00ABsugar rush\u00BB. Cependant, les preuves scientifiques \u00E0 l'appui de cette th\u00E9orie sont limit\u00E9es. Des \u00E9tudes ont \u00E9t\u00E9 men\u00E9es pour \u00E9valuer l'effet du sucre sur l'humeur, la concentration et les niveaux d'\u00E9nergie. Une m\u00E9ta-analyse publi\u00E9e dans le \u00ABBritish Journal of Nutrition\u00BB a conclu qu'il n'y a pas de preuve significative pour soutenir l'id\u00E9e d'un \u00ABsugar rush\u00BB. Les chercheurs ont constat\u00E9 que, bien que le sucre puisse provoquer une augmentation rapide de la glyc\u00E9mie, cette augmentation est rapidement suivie d'une baisse, ce qui peut entra\u00EEner une sensation de fatigue et de l\u00E9thargie.",
                                         article17);
                         Paragraph art17paragraph4 = new Paragraph(
                                         "La R\u00E9alit\u00E9 : Le Crash de Sucre / Facteurs Psychologiques",
                                         'P',
-                                        "Plut\u00F4t que de provoquer un pic d'\u00E9nergie, la consommation excessive de sucre peut entra\u00EEner un \"crash de sucre\". Lorsque le taux de sucre dans le sang diminue rapidement apr\u00E8s une hausse temporaire, cela peut entra\u00EEner une sensation de faiblesse, de fatigue et de mauvaise humeur. C'est ce qu'on appelle commun\u00E9ment la \"gueule de bois du sucre\". L'effet ressenti apr\u00E8s la consommation de sucre peut \u00E9galement \u00EAtre influenc\u00E9 par des facteurs psychologiques. Certaines personnes peuvent anticiper un regain d'\u00E9nergie apr\u00E8s avoir mang\u00E9 des sucreries, ce qui peut cr\u00E9er un effet placebo. Cela signifie que leur cerveau anticipe une augmentation d'\u00E9nergie, m\u00EAme si elle n'est pas vraiment due au sucre.",
+                                        "Plut\u00F4t que de provoquer un pic d'\u00E9nergie, la consommation excessive de sucre peut entra\u00EEner un \u00ABcrash de sucre\u00BB. Lorsque le taux de sucre dans le sang diminue rapidement apr\u00E8s une hausse temporaire, cela peut entra\u00EEner une sensation de faiblesse, de fatigue et de mauvaise humeur. C'est ce qu'on appelle commun\u00E9ment la \u00ABgueule de bois du sucre\u00BB. L'effet ressenti apr\u00E8s la consommation de sucre peut \u00E9galement \u00EAtre influenc\u00E9 par des facteurs psychologiques. Certaines personnes peuvent anticiper un regain d'\u00E9nergie apr\u00E8s avoir mang\u00E9 des sucreries, ce qui peut cr\u00E9er un effet placebo. Cela signifie que leur cerveau anticipe une augmentation d'\u00E9nergie, m\u00EAme si elle n'est pas vraiment due au sucre.",
                                         article17);
                         Paragraph art17paragraph5 = new Paragraph(
                                         "Conclusion",
                                         'C',
-                                        "En conclusion, l'effet \"sugar rush\" est davantage un mythe qu'une r\u00E9alit\u00E9 scientifique. Bien que la consommation de sucre puisse entra\u00EEner une augmentation temporaire de l'\u00E9nergie, cette hausse est souvent suivie d'une chute rapide, conduisant \u00E0 une sensation de fatigue. Plut\u00F4t que de chercher \u00E0 obtenir une mont\u00E9e d'\u00E9nergie \u00E9ph\u00E9m\u00E8re, il est pr\u00E9f\u00E9rable de maintenir une alimentation \u00E9quilibr\u00E9e pour b\u00E9n\u00E9ficier d'une \u00E9nergie constante tout au long de la journ\u00E9e. Alors, la prochaine fois que vous atteindrez le paquet de bonbons en esp\u00E9rant un \"sugar rush\", rappelez-vous que la mod\u00E9ration est la cl\u00E9 pour une sant\u00E9 optimale.",
+                                        "En conclusion, l'effet \u00ABsugar rush\u00BB est davantage un mythe qu'une r\u00E9alit\u00E9 scientifique. Bien que la consommation de sucre puisse entra\u00EEner une augmentation temporaire de l'\u00E9nergie, cette hausse est souvent suivie d'une chute rapide, conduisant \u00E0 une sensation de fatigue. Plut\u00F4t que de chercher \u00E0 obtenir une mont\u00E9e d'\u00E9nergie \u00E9ph\u00E9m\u00E8re, il est pr\u00E9f\u00E9rable de maintenir une alimentation \u00E9quilibr\u00E9e pour b\u00E9n\u00E9ficier d'une \u00E9nergie constante tout au long de la journ\u00E9e. Alors, la prochaine fois que vous atteindrez le paquet de bonbons en esp\u00E9rant un \u00ABsugar rush\u00BB, rappelez-vous que la mod\u00E9ration est la cl\u00E9 pour une sant\u00E9 optimale.",
                                         article17);
                         Paragraph art18paragraph1 = new Paragraph(
                                         "Introduction",
