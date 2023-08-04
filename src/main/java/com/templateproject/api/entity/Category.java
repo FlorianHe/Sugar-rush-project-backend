@@ -28,6 +28,12 @@ public class Category {
     public Category() {
     }
 
+    public Category(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
+    }
+
+
     public Long getId() {
         return this.id;
     }
