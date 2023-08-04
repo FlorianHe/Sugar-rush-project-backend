@@ -1,0 +1,53 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build the java project
+        run: mvn package
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: target/
+
+      - name: Build Docker image
+        run: docker build -t nairolfln/sugar-rush-api .
+
+      - name: Log in to Docker Hub (if using Docker Hub for registry)
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push Docker image to registry (if using Docker Hub)
+        run: docker push nairolfln/sugar-rush-api:latest
+
+      - name: SSH into deployment server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+          username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+          password: ${{ secrets.DEPLOY_SERVER_PASSWORD }}
+          script: |
+            docker stop sugar-rush-api || true
+            docker rm sugar-rush-api || true
+            docker pull nairolfln/sugar-rush-api:latest
+            docker run -d --name sugar-rush-api --network sugarrushnetwork -p 8000:8080 nairolfln/sugar-rush-api:latest
