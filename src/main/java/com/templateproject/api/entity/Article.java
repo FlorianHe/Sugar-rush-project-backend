@@ -55,7 +55,7 @@ public class Article {
     private User author;
 
     public Article(boolean isMain, String title, String slug,
-            String leads, String publicationImage, String author, Category category) {
+            String leads, String publicationImage, User author, Category category) {
         this.isMain = isMain;
         this.title = title;
         this.slug = slug;
@@ -64,6 +64,7 @@ public class Article {
         this.leads = leads;
 
         this.publicationImage = publicationImage;
+        this.author = author;
         this.category = category;
     }
 
