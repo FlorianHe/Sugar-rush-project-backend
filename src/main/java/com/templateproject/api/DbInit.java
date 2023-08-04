@@ -38,8 +38,8 @@ public class DbInit {
 
         @PostConstruct
         private void postConstruct() {
-                Integer i = 0;
-                if (i == 1) {
+
+                if (userRepository.count() == 0) {
                         Role roleUser = new Role("ROLE_USER");
                         Role roleAdmin = new Role("ROLE_ADMIN");
                         roleUser = roleRepository.save(roleUser);
