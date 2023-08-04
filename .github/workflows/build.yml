@@ -19,6 +19,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Set up configuration
+        run: echo "${{ secrets.APPLICATION_PROPERTIES }}" > src/main/resources/application-dev.properties
+
       - name: Build the java project
         run: mvn package
 
