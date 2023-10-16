@@ -43,6 +43,7 @@ jobs:
       - name: Push Docker image to registry (if using Docker Hub)
         run: docker push nairolfln/sugar-rush-api:latest
 
+        
       - name: SSH into deployment server
         uses: appleboy/ssh-action@master
         with:
